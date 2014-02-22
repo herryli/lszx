@@ -1,0 +1,143 @@
+{template "content","header"}
+<!--main-->
+<div class="main">
+	<div class="col-left channel-hot">
+    	<div class="news-hot">
+        <div class="icon"></div>
+        	<div class="content">
+        	{pc:content  action="position" posid="10" catid="$catid" thumb="1" order="listorder DESC" num="1"}
+				{loop $data $v}
+				  <h4 class="blue"><a href="{$v[url]}" target="_blank"{title_style($v[style])}>{str_cut($v[title], 60)}</a></h4>
+                <p><img src="{thumb($v[thumb],90,60)}" width="90" height="60" />{str_cut(strip_tags($v[description]), 160)}</p>
+                <div class="bk20 hr"><hr /></div>
+				{/loop}
+			{/pc}
+			{pc:content  action="lists" catid="$catid" order="id DESC" num="8"}
+                <ul class="list">
+                {loop $data $k $v}
+                	<li style="font-size:120%;">·<a href="{$v[url]}" title="{$v[title]}" target="_blank"{title_style($v[style])}>{str_cut($v[title], 120)}</a></li>
+                {/loop}
+                </ul>
+             {/pc}
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="col-auto channel-slide">
+    {pc:block pos="category_zixun_block"}{/pc}
+    <!--  
+    {pc:content  action="lists" catid="$catid" order="listorder DESC" thumb="1" num="5"}
+  		<ul class="thumb">
+  		{loop $data $k $v}
+        	<li {if $n==1}class="on" style="margin:0"{/if}><a href="{$v[url]}"><img src="{thumb($v[thumb], 82, 50)}"  alt="{$v[title]}" width="82" height="50" /><div class="icon"></div></a></li>
+        {/loop}
+        </ul>
+        <div class="col-auto">
+            <ul class="photo">
+            {loop $data $k $v}
+                <li><a href="{$v[url]}" title="{$v[title]}"><img src="{thumb($v[thumb], 398, 234)}" width="398" height="234" alt="{$v[title]}" /></a></li>
+            {/loop}
+            </ul>
+            <div class="title">
+            {loop $data $k $v}
+              <p  {if $n==1}style="display:block"{/if}><strong><a href="{$v[url]}" title="{$v[title]}" class="blue"{title_style($v[style])}>{str_cut($v[title], 50)}</a></strong><br />{str_cut(strip_tags($v[description]), 80)}</p>
+            {/loop}
+          </div>
+        </div>
+         {/pc}
+         -->
+    </div>
+   
+    <div class="ads">
+    	<div class="col-left"><script language="javascript" src="{APP_PATH}caches/poster_js/4.js"></script></div>
+        <div class="col-auto">
+        	<div class="left">推广链接</div>
+            <div class="right">这里放广告</div>
+        </div>
+  </div>
+  <div class="bk10"></div>
+	<div class="col-left">
+	{php $j=1;}
+	<?php //print_r("<pre>");print_r(subcat($catid));?>
+	{loop subcat($catid) $v}
+	{php if($v['type']!=0) continue;}
+        <div class="box cat-area" {if $j%2==1}style="margin-right:10px"{/if}>
+        		<h5 class="title-1">{$v[catname]}<a href="{$v[url]}" class="more">更多>></a></h5>
+             <div class="content">
+             	{if $v['catid'] != 53 && $v['catid'] != 54}
+				{pc:content action="lists" catid="$v[catid]" thumb="1" num="1" order="id DESC"}
+				<p>
+					{loop $data $v}
+						<a href="{$v[url]}" target="_blank"><img src="{thumb($v[thumb],70,60)}" width="70" height="60"/></a>
+						<strong><a href="{$v[url]}" target="_blank" title="{$v[title]}"{title_style($v[style])}>{str_cut($v[title], 30)}</a></strong><br />{str_cut($v[description],116,'..')}
+					{/loop}
+					</p>
+				{/pc}
+                
+                <div class="bk15 hr"></div>
+                {/if}
+                <ul class="list  lh24 f14">
+                {pc:content action="lists" catid="$v[catid]" num="5" order="id DESC"}
+					{loop $data $v}
+						<li><a href="{$v[url]}" target="_blank"{title_style($v[style])}>{str_cut($v[title], 60)}</a></li>
+					{/loop}
+				{/pc}
+                </ul>
+            </div>
+        </div>
+        {if $j%2==0}<div class="bk10"></div>{/if}
+	{$j++}
+	{/loop}
+	
+	<div class="box cat-area" >
+			<h5 class="title-1">
+				推荐产品<a class="more" href="{APP_PATH}index.php?m=yp&c=index&a=model&modelid=17&siteid={$siteid}">更多>></a>
+			</h5>
+		    <div class="content">
+		       {pc:yp action="position" posid="8" modelid="17" num="6" order="listorder ASC" expiration="1"}
+				<ul class="list  lh24 f14">
+				<?php //debug_print($data); ?>
+				{loop $data $v}
+					<li><a href="{$v[url]}" target="_blank"{title_style($v[style])}>{str_cut($v[title],30)}</a> <font  size="1px"  color="#777"> {str_cut(get_company_by_username($v['username']),35,"")}</font></li>
+				{/loop}
+				</ul>
+				{/pc}
+		    </div>
+		</div>
+  </div>
+    <div class="col-auto">
+        <div class="box">
+            <h5 class="title-2">频道总排行</h5>
+            <ul class="content digg">
+            {pc:content action="hits" catid="$catid" num="10" order="views DESC" cache="3600"}
+				{loop $data $v}
+					<li><a href="{$v[url]}" target="_blank"{title_style($v[style])}>{$v[title]}</a></li>
+				{/loop}
+			{/pc}
+            </ul>
+        </div>
+        <div class="bk10"></div>
+        <div class="box">
+            <h5 class="title-2">频道本月排行</h5>
+            <ul class="content rank">
+            {pc:content action="hits" catid="$catid" num="8" order="monthviews DESC" cache="3600"}
+				{loop $data $v}
+				<li><span>{number_format($v[monthviews])}</span><a href="{$v[url]}"{title_style($v[style])} class="title" title="{$v[title]}">{str_cut($v[title],56,'...')}</a></li>
+				{/loop}
+			{/pc}
+            </ul>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+function ChannelSlide(Name,Class){
+	$(Name+' ul.photo li').sGallery({
+		titleObj:Name+' div.title p',
+		thumbObj:Name+' .thumb li',
+		thumbNowClass:Class
+	});
+}
+new ChannelSlide(".channel-slide","on",311,260);
+</script>
+{template "content","footer"}
