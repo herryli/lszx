@@ -8,6 +8,7 @@
  */
  //PHPCMS根目�?
 define('PHPCMS_PATH', dirname(__FILE__).DIRECTORY_SEPARATOR);
+define('APPLICATION_PATH', "/home/herry/data/runtime/application.log");
 include PHPCMS_PATH.'/phpcms/base.php';
 pc_base::creat_app();
 ?>

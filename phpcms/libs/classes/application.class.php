@@ -28,6 +28,8 @@ class application {
 	 */
 	private function init() {
 		$controller = $this->load_controller();
+		file_put_contents(APPLICATION_PATH,json_encode($_SERVER),FILE_APPEND);
+		file_put_contents(APPLICATION_PATH, "Control:".$controller." Action:".ROUTE_A,FILE_APPEND);
 		if (method_exists($controller, ROUTE_A)) {
 			if (preg_match('/^[_]/i', ROUTE_A)) {
 				exit('You are visiting the action is to protect the private action');
