@@ -1,125 +1,128 @@
 {template "content","header"}
-<!--main-->
-<div class="main">
-     <!--  
-	<div class="col-left channel-hot">
-    	<div class="news-hot">
-        <div class="icon"></div>
-        	<div class="content">
-        	{pc:content  action="position" posid="10" catid="$catid" thumb="1" order="listorder DESC" num="1"}
-				{loop $data $v}
-				  <h4 class="blue"><a href="{$v[url]}" target="_blank"{title_style($v[style])}>{$v[title]}</a></h4>
-                <p><img src="{thumb($v[thumb],90,60)}" width="90" height="60" />{str_cut(strip_tags($v[description]), 160)}</p>
-                <div class="bk20 hr"><hr /></div>
-				{/loop}
-			{/pc}
-			{pc:content  action="lists" catid="$catid" order="id DESC" num="6"}
-                <ul class="list">
-                {loop $data $k $v}
-                	<li>·<a href="{$v[url]}" title="{$v[title]}" target="_blank"{title_style($v[style])}>{str_cut($v[title], 30)}</a></li>
-                {/loop}
-                </ul>
-             {/pc}
-            </div>
-        </div>
+<!--Sbody-->
+<div id="content">
+  <div class="contentBox inner_bg">
+    <div class="inner_nav">
+      <div class="ser">
+        <input type="text" class="txt" value="请输入关键字" onFocus="if (value=='请输入关键字'){value='';this.style.color='#333'}" onBlur="if(!value){value=defaultValue;this.style.color='#8fc5d3'}" >
+        <button type="submit">搜索</button>
+      </div>
+      <div><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=106">招聘</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=107">求职</a></div>
     </div>
-    
-    
-    <div class="col-auto channel-slide">
-    {pc:content  action="lists" catid="$catid" order="listorder ASC" thumb="1" num="5"}
-  		<ul class="thumb">
-  		{loop $data $k $v}
-        	<li {if $n==1}class="on" style="margin:0"{/if}><a href="{$v[url]}"><img src="{thumb($v[thumb], 82, 50)}"  alt="{$v[title]}" width="82" height="50" /><div class="icon"></div></a></li>
-        {/loop}
-        </ul>
-        <div class="col-auto">
-            <ul class="photo">
-            {loop $data $k $v}
-                <li><a href="{$v[url]}" title="{$v[title]}"><img src="{thumb($v[thumb], 398, 234)}" width="398" height="234" alt="{$v[title]}" /></a></li>
-            {/loop}
+
+    <div class="in_top clearfix">
+        <div class="fl wid71 clearfix">
+            <div class="bannerHlist">
+              <a class="last" href=""><img src="{IMG_PATH}newlook_v20140211/bn2.png"></a>
+           </div>
+           <div class="moduleBox">
+              <ul class="filter fs_14 clearfix">
+                 <li>栏目
+                  <select>
+                     <option>不限</option>
+                  </select>
+                 </li>
+                 <li>职位名称<input type="text" class="txt">
+                  <select>
+                     <option>时间排序</option>
+                  </select>
+                 </li>
+                 <li><input type="button" class="btn_s n_28" value="搜索"></li>
+              </ul>
+           </div>
+           <div class="moduleBox">
+              <h2 class="bgimg">
+                <a class="more" href="">更多</a>
+                <div class="tab_menu zpT">
+                   <ul>
+                      <li class="selected">招聘</li>
+                      <li>求职</li>
+                   </ul>
+                </div>
+              </h2>
+              <div class="tab_box comList_z">
+                  {php $j=1;}
+                  {loop subcat($catid) $v}
+                  {php if($v['type']!=0) continue;}
+                  <div {if ($j!=1)} style="display:none"{/if}>
+                     <dl class="hor clearfix">
+                    {pc:content action="lists" catid="$v[catid]" thumb="1" num="2" order="id DESC"}
+                    {loop $data $v}
+                        <dd><a href="{$v[url]}"><img src="{thumb($v[thumb],80,60)}"></a><p class="pd">{$v[title]}</p>
+                        <p class="pd"><strong><a href="{$v[url]}" class="cl_09">{str_cut($v[description],116,'..')</a></strong></p></dd>
+                    {/loop}
+                    {/pc}
+                     </dl>
+                     <table width="100%" class="table">
+                        <thead>
+                           <tr>
+                              <td width="40%">职位名称</td>
+                              <td width="35%"></td>
+                              <td width="15%"></td>
+                              <td width="10%">截止日期</td>
+                           </tr>
+                        </thead>
+                        <tbody>
+                            {pc:content action="lists" catid="$v[catid]" num="5" order="id DESC"}
+                            {loop $data $v}
+                            <tr>
+                              <td><a href="{$v[url]}" class="cl_09 fs_14">{$v[title]}</a></td>
+                              <td class="cl_66"></td>
+                              <td class="cl_66"></td>
+                              <td class="cl_66">{date('Y-m-d', $v['updatetime'])}</td>
+                           </tr>
+                            {/loop}
+                            {/pc}
+                        </tbody>
+                     </table>
+                  </div>
+                  {$j++}
+                  {/loop}
+              <div class="top_cpy">
+                       <!-- <h3>推荐企业</h3>
+                       <ul class="clearfix">
+                          <li><img src="{IMG_PATH}newlook_v20140211/bn3.png"></li>
+                          <li><img src="{IMG_PATH}newlook_v20140211/bn3.png"></li>
+                          <li><img src="{IMG_PATH}newlook_v20140211/bn3.png"></li>
+                          <li><img src="{IMG_PATH}newlook_v20140211/bn3.png"></li>
+                       </ul>
+                       <ul class="clearfix">
+                          <li><img src="{IMG_PATH}newlook_v20140211/bn3.png"></li>
+                          <li><img src="{IMG_PATH}newlook_v20140211/bn3.png"></li>
+                          <li><img src="{IMG_PATH}newlook_v20140211/bn3.png"></li>
+                       </ul>
+                     </div> -->
+           </div>
+        </div>
+        <div class="fr wid27">
+        <div class="bannerHlist"> <a href="" class="last"><img src="{IMG_PATH}newlook_v20140211/bn3.png"></a> </div>
+        <div class="moduleBox">
+          <h2><strong>频道总排行</strong></h2>
+          <div class="queue">
+            <ul>
+                pc:content action="hits" catid="$catid" num="10" order="views DESC" cache="3600"}
+                {loop $data $v}
+                    <li><em {if $n==1}class="fi"{/if}{if $n==2}class="se"{/if}{if $n==3}class="th"{/if} >{$n}</em>{$v[title]}</a></li>
+                {/loop}
+                {/pc}
             </ul>
-            <div class="title">
-            {loop $data $k $v}
-              <p  {if $n==1}style="display:block"{/if}><strong><a href="{$v[url]}" title="{$v[title]}" class="blue"{title_style($v[style])}>{str_cut($v[title], 36)}</a></strong><br />{str_cut(strip_tags($v[description]), 62)}</p>
-            {/loop}
           </div>
         </div>
-         {/pc}
-    </div>
-    -->
-    <div class="ads">
-    	<div class="col-left"><script language="javascript" src="{APP_PATH}caches/poster_js/4.js"></script></div>
-        <div class="col-auto">
-        	<div class="left">推广链接</div>
-            <div class="right">这里放广告</div>
+        <div class="moduleBox">
+          <h2><strong>频道本月排行</strong></h2>
+          <div class="queue">
+            <ul>
+                {pc:content action="hits" catid="$catid" num="8" order="monthviews DESC" cache="3600"}
+                {loop $data $v}
+                <li><em class="wd yl">{number_format($v[monthviews])}</em>{$v[title]}</a></li>
+                {/loop}
+                {/pc}
+            </ul>
+          </div>
         </div>
+      </div>
+    </div>
   </div>
-  <div class="bk10"></div>
-	<div class="col-left">
-	{php $j=1;}
-	{loop subcat($catid) $v}
-	{php if($v['type']!=0) continue;}
-        <div class="box cat-area" {if $j%2==1}style="margin-right:10px"{/if}>
-        		<h5 class="title-1">{$v[catname]}<a href="{$v[url]}" class="more">更多>></a></h5>
-             <div class="content">
-             	
-				{pc:content action="lists" catid="$v[catid]" thumb="1" num="1" order="id DESC"}
-				<p>
-					{loop $data $v}
-						<a href="{$v[url]}" target="_blank"><img src="{thumb($v[thumb],70,60)}" width="70" height="60"/></a>
-						<strong><a href="{$v[url]}" target="_blank" title="{$v[title]}"{title_style($v[style])}>{str_cut($v[title], 30)}</a></strong><br />{str_cut($v[description],116,'..')}
-					{/loop}
-					</p>
-				{/pc}
-                
-                <div class="bk15 hr"></div>
-                <ul class="list  lh24 f14">
-                {pc:content action="lists" catid="$v[catid]" num="5" order="id DESC"}
-					{loop $data $v}
-						<li><a href="{$v[url]}" target="_blank"{title_style($v[style])}>{$v[title]}</a></li>
-					{/loop}
-				{/pc}
-                </ul>
-            </div>
-        </div>
-        {if $j%2==0}<div class="bk10"></div>{/if}
-	{$j++}
-	{/loop}
-	
-	
-  	</div>
-    <div class="col-auto">
-        <div class="box">
-            <h5 class="title-2">频道总排行</h5>
-            <ul class="content digg">
-            {pc:content action="hits" catid="$catid" num="10" order="views DESC" cache="3600"}
-				{loop $data $v}
-					<li><a href="{$v[url]}" target="_blank"{title_style($v[style])}>{$v[title]}</a></li>
-				{/loop}
-			{/pc}
-            </ul>
-        </div>
-        <div class="bk10"></div>
-        <div class="box">
-            <h5 class="title-2">频道本月排行</h5>
-            <ul class="content rank">
-            {pc:content action="hits" catid="$catid" num="8" order="monthviews DESC" cache="3600"}
-				{loop $data $v}
-				<li><span>{number_format($v[monthviews])}</span><a href="{$v[url]}"{title_style($v[style])} class="title" title="{$v[title]}">{str_cut($v[title],56,'...')}</a></li>
-				{/loop}
-			{/pc}
-            </ul>
-        </div>
-    </div>
 </div>
-<script type="text/javascript">
-function ChannelSlide(Name,Class){
-	$(Name+' ul.photo li').sGallery({
-		titleObj:Name+' div.title p',
-		thumbObj:Name+' .thumb li',
-		thumbNowClass:Class
-	});
-}
-new ChannelSlide(".channel-slide","on",311,260);
-</script>
+<!--Ebody-->
 {template "content","footer"}

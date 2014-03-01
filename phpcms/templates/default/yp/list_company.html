@@ -1,120 +1,123 @@
-{template 'yp', 'header'}
+{template "content","header"}
+<!--Sbody-->
+<div id="content">
+  <div class="contentBox inner_bg">
+    <div class="inner_nav">
+      <div class="ser">
+        <input type="text" class="txt" value="请输入关键字" onFocus="if (value=='请输入关键字'){value='';this.style.color='#333'}" onBlur="if(!value){value=defaultValue;this.style.color='#8fc5d3'}" >
+        <button type="submit">搜索</button>
+      </div>
+      <div><a href="{get_yp_url()}">企业黄页</a><a href="{APP_PATH}index.php?m=yp&c=index&a=model&modelid=17">产品</a><a href="{APP_PATH}index.php?m=yp&c=index&a=lists&modelid=18&areaid=&catid=43&page=1">商机</a><a href="{get_yp_url('company')}" class="on">企业库</a></div>
+    </div>
 
-<!--main-->
-<div class="main clear">
-	<div class="crumbs" style="margin-bottom:0"><a href="{APP_PATH}">首页</a><span> &gt; </span><a href="{APP_PATH}index.php?m=yp">黄页</a> &gt;企业库列表</div>
-	
-	 <div class="box cat-data" id="PropSingle">
-    	<div class="choosed"><strong class="ib">您已选择:</strong>{if is_array($parent_url) && !empty($parent_url)}<a href="{$parent_url['url']}" class="">{$parent_url['title']}</a>{/if}</div>
-		{if $company_fenlei[$catid][child]!='0'}
-    	<dl class="clear">
-        	<dt><strong>分类：</strong></dt>
-            <dd class="AttrBox clear">
-			{php $arr_parentid = yp_subcat($catid, $modelid);}
-			{loop $arr_parentid $k}
-			<a title="{$k['catname']}" href="{$k['url']}">{$k['catname']}</a>
-			{/loop}
-			</dd>
-        </dl> 
-		{/if}  
-    </div>
-    <div class="col-left picbig">
-    	<div class="category-main box generic info-content">
-        	<div class="title">
-                <div class="orderby-select mouseover" type="select" heights="23" position="0" style="display:none">
-                	<div class="select"><a class="up" href="">更新时间排序</a></div>
-                    <ul class="selectlist subselect_0" style="display:none;"><li><a class="null" href="">请选择排序方式</a></li><li><a class="up" href="">更新时间排序</a></li><li><a class="up" href="">诚信等级由到高到低</a></li><li><a class="down" href="">诚信等级由低到低高</a></li></ul>
-                </div>
-<strong>企业库信息列表</strong></div>
-            <ul class="info-top">
-            	<li class="pic"></li>
-                <li class="vip" style="width:110px">会员等级</li>
-                <li class="info">公司信息</li>
-            </ul>
-           
-           {pc:yp action="get_company_byfenlei" catid="$catid" num="10" cache="0" page="$page"}
-           <?php //print_r($pages);exit("ff"); ?>
-           {loop $data $i}
-           
-           {php $com_data=get_companyinfo($i['userid']);}
-           {if $com_data['status']==1}
-                 <ul class="info-item clear"{if $n==1} style="border-top:none"{/if}>
-            	<li class="pic"><div class="img-wrap">
-                        <a href="{$com_data[url]}" title="{$com_data[title]}"><img src="{$com_data[logo]}" title="{$com_data[title]}" width="112" height="92"></a>
-                    </div></li>
-                <li class="vip" style="width:110px">
-				{get_company_rank($com_data['userid'])}
-				</li>
-                <li class="info">
-                    <h2><a href="{$com_data['url']}" title="{$com_data[title]}" target="_blank">{$com_data[companyname]}</a></h2>
-                    <p>
-                       主营业务： {str_cut($com_data['products'],120)}<br />
-                       联系方式：{$com_data['telephone']}<br />
-					   公司地址：{$com_data['areaname']} {$com_data['address']}
-					</p>
-                </li>
-              </ul>
-              {/if}
-             {/loop}
-             
-              <div id="pages" class="text-c">{$pages}</div>
-            {/pc}   
-         </div>
-    </div>
-    <div class="col-auto">
-    	<div class="box box-tab fillet fillet-blue">
-    	
-         	<ul class="tab clear swap-tab cu-li">
-            	<li class="on">推荐商家</li>
-                <li>最新加盟</li>
-            </ul>
-            
-        	<div class="swap-content">
-         	<ul class="list-num">
-            	{pc:yp action="get_company" elite="1" num="8" order="regtime DESC" cache="0"}
-        		{loop $data $i}
-        		<li><em {if $n<4}class="n{$n}"{/if} >{$n}</em><a href="{APP_PATH}index.php?m=yp&c=com_index&userid={$i[userid]}" target="_blank">{$i['companyname']}</a></li>
-        		{/loop}
-        		{/pc} 
-            </ul>
-            
-            <ul class="list-num" style="display:none;">
-            	{pc:yp action="get_company" num="8" order="regtime DESC" cache="0"}
-        		{loop $data $i}
-        		<li><em {if $n<4}class="n{$n}"{/if} >{$n}</em><a href="{APP_PATH}index.php?m=yp&c=com_index&userid={$i[userid]}" target="_blank">{$i['companyname']}</a></li>
-        		{/loop}
-        		{/pc} 
-            </ul>
+    <div class="in_top clearfix">
+        <div class="fl wid71 clearfix">
+            <div class="bannerHlist">
+              <a class="last" href=""><img src="{IMG_PATH}newlook_v20140211/bn2.png"></a>
+           </div>
+           <div class="moduleBox bd_tp">
+             <div class="catalog">
+               <ul>
+                  <li class="clearfix">
+                 <label>分类</label>
+                     <dl class="category clearfix">
+                        {php $arr_parentid = yp_subcat($catid, $modelid);}
+                        {loop $arr_parentid $k}
+                        <dd><a href="{$k['url']}">{$k['catname']}</a>|</dd>
+                        {/loop}
+                     </dl>
+                  </li>
+               </ul>
             </div>
-         
-         
-            <span class="o1"></span><span class="o2"></span><span class="o3"></span><span class="o4"></span>
-        </div>
-    	<div class="bk10"></div>
-        <div class="box box-tab fillet fillet-blue">
-        	<ul class="tab clear swap-tab cu-li">
-            	<li class="on">24小时热点商机</li>
-                <li>本周热点商机</li>
-            </ul>
-        	<div class="swap-content">
-         	<ul class="list-num">
-            	{pc:yp action="hits" modelid="$this->setting_models[76]" num="10" order="views DESC" cache="0" }
- 					{loop $data $r}
-		            <li><em {if $n<4}class="n{$n}"{/if} >{$n}</em><a href="{$r[url]}" target="_blank">{$r[title]}</a></li>
-  	            {/loop}
-	            {/pc}
-            </ul>
-            
-            <ul class="list-num" style="display:none;">
-            	{pc:yp action="hits" modelid="$this->setting_models[76]" num="10" order="weekviews DESC" cache="0" }
- 					{loop $data $r}
-		            <li><em {if $n<4}class="n{$n}"{/if} >{$n}</em><a href="{$r[url]}" target="_blank">{$r[title]}</a></li>
-  	            {/loop}
-	            {/pc}
-            </ul>
+           </div>
+           <div class="moduleBox">
+              <h2 class="bgimg">
+              <strong>企业库信息列表</strong>
+              </h2>
+              <div class="prductList firm">
+                {pc:yp action="get_company_byfenlei" catid="$catid" num="8" cache="0" page="$page"}
+                 <ul>
+                    {loop $data $i}
+                    {php $com_data=get_companyinfo($i['userid']);}
+                    {if $com_data['status']==1}
+                      <li class="clearfix">
+                      <a href="{$com_data[url]}"><img src="{$com_data[logo]}"></a>
+                      <div class="descrip">
+                         <h3><span>累计信用：{get_company_rank($com_data['userid'])}</span><a href="{$com_data['url']}">{$com_data[companyname]}</a></h3>
+                         <p class="zyyw">主营业务： {str_cut($com_data['products'],120)}...</p>
+                         <p>联系方式： {$com_data['telephone']}</p>
+                         <p>公司地址： {$com_data['areaname']} {$com_data['address']}</p>
+                      </div>
+                    </li>
+                    {/if}
+                    {/loop}
+                </ul>
+                <div id="pages" class="page-s">{$pages}</div>
+                {/pc}
+                 <!-- <div class="page-s">
+                   <a href="">1</a><a href="" class="on">2</a><a href="">3</a><a href="">4</a><a href="">5</a><a href="">6</a><a class="more">...</a><a href="">13</a>
+                 </div> -->
+              </div>
+           </div>
+           <div>
+             <div class="moduleBox fl wid35">
+                <h2><strong>推荐商家</strong></h2>
+                <div class="chanceBox adPd fs_14">
+                 <ul>
+                    {pc:yp action="get_company" elite="1" num="7" order="regtime DESC" cache="0"}
+                    {loop $data $i}
+                    <li class="clearfix"><a href="{APP_PATH}index.php?m=yp&c=com_index&userid={$i[userid]}">{$i['companyname']}</a></li>
+                    {/loop}
+                    {/pc}
+                 </ul>
              </div>
-            <span class="o1"></span><span class="o2"></span><span class="o3"></span><span class="o4"></span>
+             </div>
+             <div class="moduleBox fr wid35">
+                <h2><strong>最新加盟</strong></h2>
+                <div class="chanceBox adPd fs_14">
+                 <ul>
+                    {pc:yp action="get_company" num="7" order="regtime DESC" cache="0"}
+                    {loop $data $i}
+                    <li class="clearfix"><a href="{APP_PATH}index.php?m=yp&c=com_index&userid={$i[userid]}">{$i['companyname']}</a></li>
+                    {/loop}
+                    {/pc}
+                 </ul>
+             </div>
+             </div>
+           </div>
+        </div>
+        <div class="fr wid27">
+            <div class="bannerHlist">
+              <a class="last" href=""><img src="{IMG_PATH}newlook_v20140211/bn3.png"></a>
+           </div>
+            <div class="moduleBox">
+            <h2><strong>24小时热点商机</strong></h2>
+            <div class="queue">
+               <ul>
+                    {php $buy_type = $this->buy_type;}
+                    {pc:yp action="hits" modelid="$modelid" day="1" num="5"}
+                    {loop $data $r}
+                    <li><em {if $n==1}class="fi"{/if}{if $n==2}class="se"{/if}{if $n==3}class="th"{/if} >{$n}</em><a href="{yp_filters_url('tid', array('tid'=>$r['tid'], 'catid'=>$r['catid']), 2, $modelid)}" class="cl_5b">[{$buy_type[$r['tid']]}]</a><a href="{$r['url']}">{$r['title']}</a></li>
+                    {/loop}
+                    {/pc}
+               </ul>
+            </div>
+         </div>
+         <div class="moduleBox">
+            <h2><strong>周热点商机</strong></h2>
+            <div class="queue">
+               <ul>
+                    {pc:yp action="hits" modelid="$modelid" order="weekviews DESC" num="10"}
+                    {loop $data $r}
+                    <li><em {if $n==1}class="fi"{/if}{if $n==2}class="se"{/if}{if $n==3}class="th"{/if} >{$n}</em><a href="{yp_filters_url('tid', array('tid'=>$r['tid'], 'catid'=>$r['catid']), 2, $modelid)}" class="cl_5b">[{$buy_type[$r['tid']]}]</a><a href="{$r['url']}">{str_cut($r['title'], 30)}</a></li>
+                    {/loop}
+                    {/pc}
+               </ul>
+            </div>
+         </div>
         </div>
     </div>
+  </div>
 </div>
-{template 'yp', 'footer'}
+<!--Ebody-->
+{template "content","footer"}

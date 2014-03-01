@@ -1,66 +1,90 @@
 {template "content","header"}
-<link href="{CSS_PATH}download.css" rel="stylesheet" type="text/css" />
-<!--main-->
-<div class="main">
-	<!--left_bar-->
-	<div class="col-left">
-    <div class="crumbs"><a href="#">首页</a><span> &gt; </span>{catpos($catid)}</div>
-    	<!--最新下载-->
-    <div class="box mg_b10">
-        		<h5>最新下载</h5>
-            <ul class="content news-photo col4">
-			{pc:content action="lists" catid="$catid" num="4"  thumb="1" order="id DESC"}
-			{loop $data $r}
-            	<li>
-                    <div class="img-wrap">
-                        <a href="{$r[url]}"><img src="{thumb($r[thumb],110,90)}" width="110" height="90"></a>
-                    </div>
-                    <a href="{$r[url]}" title="{$r[title]}" style="color:{$r[style]}">{str_cut($r[title],24,'')}</a>
-                </li>
-			{/loop}	
-			{/pc}
-            </ul>
+<!--Sbody-->
+<div id="content">
+  <div class="contentBox inner_bg">
+    <div class="inner_nav">
+      <div class="ser">
+        <input type="text" class="txt" value="请输入关键字" onFocus="if (value=='请输入关键字'){value='';this.style.color='#333'}" onBlur="if(!value){value=defaultValue;this.style.color='#8fc5d3'}" >
+        <button type="submit">搜索</button>
+      </div>
+      <div><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=97">图纸</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=98">文章</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=99">资料</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=100">图片</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=101">样本</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=102">专题</a></div>
+    </div>
+
+    <div class="in_top clearfix">
+        <div class="fl wid71 clearfix">
+            <div class="bannerHlist">
+              <a class="last" href=""><img src="{IMG_PATH}newlook_v20140211/bn2.png"></a>
+           </div>
+           <div class="moduleBox">
+              <h2 class="bgimg">
+              <strong>{catpos($catid)}</strong>
+              </h2>
+              <div class="imgDown">
+                 <ul class="clearfix">
+                    {pc:content action="lists" catid="$catid" num="15" order="id DESC" page="$page"}
+                    {loop $data $r}
+                    <li>
+                      <span class="fr"><a href="{$r[url]}" class="dw kp"><i class="fl"></i>120点</a></span>
+                      <a href=""><img src="{thumb($r[thumb], 140, 105)}"></a>
+                      <div class="fl wid42">
+                         <p class="title"><a href="">{$r[title]}</a></p>
+                         <p class="note">简介：{$r[description]}</p>
+                         <p>
+                           <em></em><span class="clP">文件大小：</span>{$r[filesize]}<span class="clP">{date('Y-m-d',$r[inputtime])}</span>
+                         </p>
+                      </div>
+                    </li>
+                    {/loop}
+                    {/pc}
+                 </ul>
+                 <div class="page-s" id="pages">
+                   {$pages}
+                 </div>
+              </div>
+           </div>
         </div>
-		{pc:content action="lists" catid="$catid" num="15" order="id DESC" page="$page"}
-        <div class="box boxsbg">
-		{loop $data $r}
-        	<dl class="down_list sysnews">
-              <dt><h5><a target="_blank" href="{$r[url]}" title="{$r[title]}">{$r[title]}</a></h5></dt>
-              <dd class="down_txt">{$r[description]}</dd>
-              <dd class="down_attribute align_r"><span class="icon_1">软件大小：{$r[filesize]}</span><span class="icon_3">星级：{$r[stars]}</span><span class="icon_4">更新时间：{date('Y-m-d',$r[inputtime])}</span></dd>
-            </dl>
-		{/loop}	
-        	<!--pages-->
-        <div class="text-c mg_t20" id="pages">{$pages}</div>
-		{/pc}
+        <div class="fr wid27">
+            <div class="bannerHlist">
+              <a class="last" href=""><img src="{IMG_PATH}newlook_v20140211/bn3.png"></a>
+           </div>
+           <div class="moduleBox hei07">
+               <div class="sortPr xzfl">
+                  <h3>下载分类</h3>
+                  <ul class="clearfix">
+                     {loop subcat($catid) $r}
+                     <li><a href="{$r[url]}">{$r[catname]}</a></li>
+                     {/loop}
+                  </ul>
+               </div>
+            </div>
+            <div class="moduleBox">
+            <h2><strong>下载排行</strong></h2>
+            <div class="queue">
+               <ul>
+                    {pc:content action="hits" catid="$catid" num="10" order="views DESC" cache="3600"}
+                    {loop $data $r}
+                        <li><em{if $n==1} class="fi"{/if}{if $n==1} class="se"{/if}{if $n==1} class="th"{/if}>{$n}</em><a href="{$r[url]}">{$r[title]}</a></li>
+                    {/loop}
+                    {/pc}
+               </ul>
+            </div>
+         </div>
+         <div class="moduleBox">
+            <h2><strong>推荐下载</strong></h2>
+            <div class="queue">
+               <ul>
+                    {pc:content  action="position" posid="5" order="listorder DESC" num="4"}
+                    {loop $data $r}
+                        <li><a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],34)}</a></li>
+                        <li><em{if $n==1} class="fi"{/if}{if $n==1} class="se"{/if}{if $n==1} class="th"{/if}>{$n}</em><a href="{$r[url]}">{str_cut($r[title],34)}</a></li>
+                    {/loop}
+                    {/pc}
+               </ul>
+            </div>
+         </div>
         </div>
     </div>
-    <!--right_bar-->
-    <div class="col-auto">
-    	<!--广告228x90-->
-    	<div class="brd mg_b10"><script language="javascript" src="{APP_PATH}caches/poster_js/5.js"></script></div>
-        <div class="box">
-            <h5 class="title-2">下载排行</h5>
-            <ul class="content digg">
-			{pc:content action="hits" catid="$catid" num="10" order="views DESC" cache="3600"}
-				{loop $data $r}
-					<li><a href="{$r[url]}" target="_blank">{$r[title]}</a></li>
-				{/loop}
-			{/pc}
-            </ul>
-        </div>
-        <div class="bk10"></div>
-        <div class="box">
-            <h5 class="title-2">推荐下载</h5>
-            <ul class="content digg">
-            	{pc:content  action="position" posid="5" order="listorder DESC" num="4"}
-        	 	{loop $data $r}        
-                <li><a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],34)}</a></li>
-               	{/loop}  
-             	{/pc} 
-            </ul>
-        </div>
-    </div>
+  </div>
 </div>
-<div class="bk10"></div>
+<!--Ebody-->
 {template "content","footer"}
