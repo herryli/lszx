@@ -1,90 +1,77 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=7" />
+<meta charset="utf-8" />
 <title>{if isset($SEO['title']) && !empty($SEO['title'])}{$SEO['title']}{/if}{$SEO['site_title']}</title>
-<meta name="keywords" content="{$SEO['keyword']}">
-<meta name="description" content="{$SEO['description']}">
-<meta property="wb:webmaster" content="c6b99c1c57a90d5d" />
-<link href="{CSS_PATH}reset.css" rel="stylesheet" type="text/css" />
-<link href="{CSS_PATH}default_blue.css" rel="stylesheet" type="text/css" />
-<script type="text/javascript" src="{JS_PATH}jquery.min.js"></script>
-<script type="text/javascript" src="{JS_PATH}jquery.sgallery.js"></script>
-<script type="text/javascript" src="{JS_PATH}search_common.js"></script>
+<link href="{CSS_PATH}newlook_v20140211/reset.css" rel="stylesheet" type="text/css">
+{if $SEO['site_title'] != "公司模版"}<link href="{CSS_PATH}newlook_v20140211/common.css" rel="stylesheet" type="text/css">{/if}
+{if $SEO['site_title'] == "公司模版"}<link href="{CSS_PATH}newlook_v20140211/company.css" rel="stylesheet" type="text/css">{/if}
+{if $SEO['site_title'] != "公司模版"}<link href="{CSS_PATH}newlook_v20140211/index.css" rel="stylesheet" type="text/css">{/if}
+{if $SEO['site_title'] != "首页" && $SEO['site_title'] != "公司模版"}<link href="{CSS_PATH}newlook_v20140211/other.css" rel="stylesheet" type="text/css">{/if}
+<script type="text/javascript" src="{JS_PATH}newlook_v20140211/jquery-1.4.2.min.js"></script>
+{if $SEO['site_title'] != "公司模版"}<script type="text/javascript" src="{JS_PATH}newlook_v20140211/common.js"></script>{/if}
+{if $SEO['site_title'] == "公司模版"}<script type="text/javascript" src="{JS_PATH}newlook_v20140211/company.js"></script>{/if}
 </head>
 <body>
-<div class="body-top">
-    <div class="content">
-    {pc:content  action="position" posid="9" order="id" num="10" cache="3600"}
-    		<div id="announ">
-                 <ul>
-		 {php //$temp = var_export($data,true);file_put_contents("a.txt",$temp,FILE_APPEND)}
-                 {loop $data $k $v}
-                      <li><a href="{$v[url]}" target="_blank">{$v[title]}</a></li>
-                      {/loop}
-                 </ul>
-            </div>
-     {/pc}
-	 {php echo runhook('glogal_header')}
-<script type="text/javascript">
-$(function(){
-	startmarquee('announ',22,1,500,3000);
-})
-</script>
-            <div class="login lh24 blue"><a href="{APP_PATH}index.php?m=content&c=rss&siteid={get_siteid()}" class="rss ib">rss</a><span class="rt"><script type="text/javascript">document.write('<iframe src="{APP_PATH}index.php?m=member&c=index&a=mini&forward='+encodeURIComponent(location.href)+'&siteid={get_siteid()}" allowTransparency="true"  width="500" height="24" frameborder="0" scrolling="no"></iframe>')</script></span></div>
-    </div>
+<div id="site-nav">
+  <div id="site-nav-con"> <a href="">帮助中心</a>|<a href="">联系我们</a>|<a href="">关于我们</a> </div>
 </div>
-<div class="header">
-	<div class="logo"><a href="{siteurl($siteid)}/"><img src="{IMG_PATH}v9/logo.jpg" /></a></div>
-
-    <div class="search">
-    	<div class="tab" id="search">
-			{php $j=0}
-			{php $search_model = getcache('search_model_'.$siteid, 'search');}
-			{loop $search_model $k=>$v}
-			{php $j++;}
-				<a href="javascript:;" onclick="setmodel({$v['typeid']}, $(this));" style="outline:medium none;" hidefocus="true" {if $j==1 && $typeid=$v['typeid']} class="on" {/if}>{$v['name']}</a>{if $j != count($search_model)}<span> | </span>{/if}
-			{/loop}
-			{php unset($j);}
-		</div>
-
-        <div class="bd">
-            <form action="{APP_PATH}index.php" method="get" target="_blank">
-				<input type="hidden" name="m" value="search"/>
-				<input type="hidden" name="c" value="index"/>
-				<input type="hidden" name="a" value="init"/>
-				<input type="hidden" name="typeid" value="{$typeid}" id="typeid"/>
-				<input type="hidden" name="siteid" value="{$siteid}" id="siteid"/>
-                <input type="text" class="text" name="q" id="q"/><input type="submit" value="搜 索" class="button" />
-            </form>
-        </div>
+<!--Sheader-->
+<div id="header">
+  <div class="header-con">
+    <h2 id="siteLogo"><a href=""> <img src="{IMG_PATH}newlook_v20140211/common/logo.png"> </a></h2>
+    <div id="siteSearch">
+      <div class="tab">
+        <ul>
+      {php $j=0}
+      {php $search_model = getcache('search_model_'.$siteid, 'search');}
+      {loop $search_model $k=>$v}
+      {php $j++;}
+          <li><a href="javascript:;" onclick="setmodel({$v['typeid']}, $(this));" style="outline:medium none;" hidefocus="true" {if $j==1 && $typeid=$v['typeid']} class="on" {/if}>{$v['name']}</a>{if $j != count($search_model)}|{/if}</li>
+      {/loop}
+      {php unset($j);}
+        </ul>
+      </div>
+      <div class="panel">
+      <form action="{APP_PATH}index.php" method="get" target="_blank">
+        <div class="combobox">
+        <input type="hidden" name="m" value="search"/>
+        <input type="hidden" name="c" value="index"/>
+        <input type="hidden" name="a" value="init"/>
+        <input type="hidden" name="typeid" value="{$typeid}" id="typeid"/>
+        <input type="hidden" name="siteid" value="{$siteid}" id="siteid"/>
+        <input class="input-wrap" type="text" value="请输入关键字" onFocus="if (value=='请输入关键字'){value='';this.style.color='#333'}" onBlur="if(!value){value=defaultValue;this.style.color='#ccc'}" name="q" id="q" />
+        <i></i> </div>
+        <button type="submit">搜索</button>
+      </form>
+      </div>
     </div>
-
-    <div class="banner"><script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=1"></script></div>
-    <div class="bk3"></div>
-    <div class="nav-bar">
-    	<map>
-    	{pc:content action="category" catid="0" num="25" siteid="$siteid" order="listorder ASC"}
-        	<ul class="nav-site">
-			<li><a href="{siteurl($siteid)}"><span>首页</span></a></li>
-			{loop $data $r}
-			<li class="line">|</li>
-			<li><a href="{$r[url]}"><span>{$r[catname]}</span></a></li>
-			{/loop}
-            </ul>
-        {/pc}
-		{php echo runhook('glogal_menu')}
-        </map>
-    </div>
-	{if $top_parentid}
-    <div class="subnav">
-		{pc:content action="category" catid="$top_parentid" num="15" siteid="$siteid" order="listorder ASC"}
-			{loop $data $r}
-			<a href="{$r[url]}">{$r[catname]}</a><span> | </span>
-			{/loop}
-        {/pc}
-    	{if $modelid}<a href="{APP_PATH}index.php?m=content&c=search&catid={$catid}">搜索</a>{/if}
-    </div>
-	{/if}
+  </div>
 </div>
+<!--Eheader-->
+<!--Snav-->
+<div id="siteNav">
+  <div id="siteNav-con">
+    <!-- <ul class="clearfix">
+      <li class="fr"><span><em></em>购物车<a href="">0</a> 件</span><a href="">去结算>></a></li>
+      <li><a href="">首页<i></i></a>|</li>
+      <li><a href="" class="on">商务<i></i></a>|</li>
+      <li><a href="">资讯<i></i></a>|</li>
+      <li><a href="">会员<i></i></a>|</li>
+      <li><a href="">招聘求职<i></i></a>|</li>
+      <li><a href="">下载<i></i></a>|</li>
+    </ul> -->
+    {pc:content action="category" catid="0" num="25" siteid="$siteid" order="listorder ASC"}
+        <ul class="clearfix">
+        <li class="fr"><span><em></em>购物车<a href="">0</a> 件</span><a href="">去结算>></a></li>
+        <li><a href="{siteurl($siteid)}">首页<i></i></a>|</li>
+        {loop $data $r}
+        <li><a href="{$r['url']}" {if $top_parentid == $r['catid']}class="on"{/if}>{$r['catname']}<i></i></a>|</li>
+        {/loop}
+        </ul>
+    {/pc}
+    {php echo runhook('glogal_menu')}
+  </div>
+</div>
+<!--Enav-->
+{template "content","footer"}

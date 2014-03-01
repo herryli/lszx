@@ -1,202 +1,355 @@
 {template "content","header"}
-<!--main-->
-<div class="main">
-	<div class="col-left">
-    	<div class="news-hot">
-        	<div class="content">
-        	{pc:content  action="position" posid="2" order="listorder DESC" num="5"}
-        	 {loop $data $r}
-                <h4 class="blue"><a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],36,'')}</a></h4>
-                <p>{if $n==1}<a href="{$r[url]}" title="{$r[title]}"><img src="{thumb($r[thumb],90,60)}" width="90" height="60"/></a>{/if}{str_cut($r[description],160)}</p>
-                <div class="bk20 hr"><hr /></div>
-               {/loop}  
-             {/pc}   
-            </div>
+<!--Sbody-->
+<div id="content">
+   <div class="contentBox clearfix">
+      <div class="in_top clearfix">
+                 <div class="leftBox wid42">
+          <div class="bannerImg" >
+            <ul class="slider" >
+                {pc:content  action="position" posid="2" thumb="1" order="listorder DESC" num="5"}
+                {loop $data $r}
+                <li><img src="{thumb($r[thumb],420,274)}" alt=""><p><a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],36,'')}</a></p></li>
+                {/loop}
+                {/pc}
+            </ul>
+            <ul class="smallImg" >
+                {pc:content  action="position" posid="2" order="listorder DESC" num="5"}
+                <li>{$n}</li>
+                {/pc}
+            </ul>
         </div>
-        <div class="slide">
-            <div class="FocusPic">
-            {pc:content  action="position" posid="1"  order="listorder DESC" thumb="1" num="5"}
-            	<div class="content" id="main-slide">
-                    <div class="changeDiv">  
+        <div class="moduleBox hei27">
+             <h2><a href="{APP_PATH}index.php?m=yp&c=index&a=company&siteid={$siteid}" class="more">更多</a><strong>推荐企业</strong><span>我要推荐</span></h2>
+             <div class="recomBox">
+                 <ul>
+                    {pc:yp action="get_company" num="1" thumb="1" order="regtime DESC" elite="1" }
                     {loop $data $r}
-                        <a href="{$r['url']}" title="{str_cut($r['title'],30)}"><img src="{thumb($r['thumb'],310,260)}" alt="{$r['title']}" width="310" height="260" /></a>
+                    <li class="clearfix"><a href="{$r['url']}"><img src="{thumb($r[thumb],110,90)}"></a><h3>{str_cut($r['title'], 60)}</h3><p>{str_cut($r['description'], 35)}...</p></li>
                     {/loop}
-                    </div>
-                </div>
-            {/pc}
-            </div>
-            <div class="bk10"></div>			
-        	<div class="box extend">				<!--  
-            	<div class="col-left">推荐广告</div>
-                <div class="col-auto">
-				{pc:block pos="index_block_1"}{/pc}
-				</div>				-->
-                <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=10"></script>				<script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=15"></script>				<script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=16"></script>
-            </div>			
+                    {/pc}
+                    <li class="clearfix">
+                    {pc:yp action="get_company" num="4" thumb="1" order="regtime DESC" elite="1" }
+                    {loop $data $r}
+                    {if $n!=1}<a href="{$r['url']}"><img src="{thumb($r[thumb],110,90)}"></a>{/if}
+                    {/loop}
+                    {/pc}
+                    </li>
+                 </ul>
+             </div>
         </div>
-        <div class="bk10"></div>		<!--  
-        <div class="box">
-        		<h5>图片新闻</h5>
-          {pc:content  action="position" posid="12" thumb="1" order="listorder DESC" num="10"}
-            <ul class="content news-photo picbig">
-             {loop $data $r}
-            	<li>
-                    <div class="img-wrap">
-                        <a href="{$r[url]}" title="{$r[title]}"><img src="{thumb($r[thumb],110,0)}" title="{$r[title]}"/></a>
-                    </div>
-                    <a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],20)}</a>
-                </li>
-                {/loop}
-            </ul>
-            {/pc}
-        </div>		-->
-        <div class="bk10"></div>		<div class="box cat-area" style=" margin-right:10px">			<h5 class="title-1">				推荐企业<a class="more" href="{APP_PATH}index.php?m=yp&c=index&a=company&siteid={$siteid}">更多>></a>			</h5>		    <div class="content">		    	{pc:yp action="get_company" num="1" order="regtime DESC" elite="1" }		    	{loop $data $r}		    	<?php //print_r("<pre>");print_r($r);?>			    <p>				    <img width="90" height="60" src="{$r['logo']}">				    <strong>				    <a style="" title="{$r['companyname']}" target="_blank" href="{$r['url']}">{str_cut($r['companyname'], 60)}</a>				    </strong>				    <br>				</p>				<div class="bk15 hr"></div>				{/loop}				{/pc}				<ul class="list lh24 f14">					{pc:yp action="get_company" num="6" order="regtime DESC" elite="1" }			    	{loop $data $r}			    	{if $n != 1}					<li>						·						<a style="" title="{$r['title']}" target="_blank" href="{$r['url']}">{str_cut($r['companyname'], 60)}</a>					</li>					{/if}					{/loop}					{/pc}				</ul>		    </div>		</div>				<div class="box cat-area" >			<h5 class="title-1">				商务<a class="more" href="{APP_PATH}index.php?m=yp&c=index&a=init&siteid={$siteid}">更多>></a>			</h5>								<?php //print_r("<pre>");print_r($r);?>		    	<div class="content">		    	{pc:yp action="lists" modelid="18" thumb="1" order="id DESC" num="1" }				<?php //print_r("<pre>");print_r($data);?>				{loop $data $r}				    		<p>					    <img width="90" height="60" src="{$r['thumb']}">					    <strong>					    <a style="" title="{$r['title']}" target="_blank" href="{$r['url']}">[{$r['tid']}]{str_cut($r['title'], 60)}</a>					    </strong>					    <br>{str_cut($r['description'], 60)}					</p>				<div class="bk15 hr"></div>					{/loop}				{/pc}									<ul class="list lh24 f14">					{pc:yp action="lists" modelid="18" order="id DESC" num="5"}						{loop $data $r}						<li>							·							<a style="" title="{$r['title']}" target="_blank" href="{$r['url']}">[{$r['tid']}]{str_cut($r['title'], 60)}</a>						</li>						{/loop}					{/pc}					</ul>						    </div>		</div>				<div class="bk10"></div>		
-         <div class="ads">
-	  		<div class="col-left">	  				<div style="margin-top:2px">			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=48"></script>			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=53"></script>		    	    </div>		    	    <div style="margin-top:2px">			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=49"></script>			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=54"></script>		    	    </div>		    	    <div style="margin-top:2px">			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=50"></script>			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=55"></script>		    	    </div>		    	    <div style="margin-top:2px">			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=51"></script>			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=56"></script>		    	    </div>		    	    <div style="margin-top:2px">			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=52"></script>			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=57"></script>		    	    </div>	  		</div>
-  	  </div>
-  	<div class="bk10"></div>  	  	<div class="box cat-area" style=" margin-right:10px">		<h5 class="title-1">			会员<a class="more" href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=48">更多>></a>		</h5>				<div class="content">				{pc:content  action="lists" catid="48" moreinfo="1" order="updatetime DESC" thumb="1" num="1" return="info"}				{loop $info $v}				<p>						<img src="{thumb($v[thumb],90,0)}" width="90" height="60"/>						    <strong><a href="{$v['url']}" target="_blank" title="{$v['title']}"{title_style($v[style])}>{str_cut($v['title'],28)}</a></strong><font size="1px" color="#777"> {str_replace("|0","",str_cut($v['copyfrom'],30,""))}</font><br/>{str_cut($v['description'],100)}						</p>			{/loop}		{/pc}                				<div class="bk15 hr"></div>						{pc:content action="lists" catid="48" moreinfo="1" num="5" order="id DESC" return="info"}		<ul class="list lh24 f14">		{loop $info $v}			<li>·<a href="{$v['url']}" target="_blank" title="{$v['title']}"{title_style($v[style])}>{str_cut($v['title'],40)}</a><font size="1px" color="#777"> {str_replace("|0","",str_cut($v['copyfrom'],30,""))}</font></li>		{/loop}		</ul>		{/pc}				</div>	</div>  	  	<div class="box cat-area" >		<h5 class="title-1">			招聘求职<a class="more" href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=49">更多>></a>		</h5>				<div class="content">				{pc:content  action="lists" catid="106" moreinfo="1" order="updatetime DESC" thumb="1" num="1" return="info"}				{loop $info $v}				<p>						<img src="{thumb($v[thumb],90,0)}" width="90" height="60"/>						    <strong><a href="{$v['url']}" target="_blank" title="{$v['title']}"{title_style($v[style])}>{str_cut($v['title'],28)}</a></strong><font size="1px" color="#777"> {str_cut($v['company_name'],30,"")}</font><br/>{str_cut($v['description'],100)}						</p>			{/loop}		{/pc}                				<div class="bk15 hr"></div>		<ul class="list lh24 f14">				{pc:content action="lists" catid="106" moreinfo="1" num="3" order="id DESC" return="info"}			{loop $info $v}				<li>·<a href="{$v['url']}" target="_blank" title="{$v['title']}"{title_style($v[style])}>{str_cut($v['title'],40)}</a><font size="1px" color="#777"> {str_cut($v['company_name'],30,"")}</font></li>			{/loop}			{/pc}				{pc:content action="lists" catid="107" moreinfo="1" num="2" order="id DESC" return="info"}			{loop $info $v}				<li>·<a href="{$v['url']}" target="_blank" title="{$v['title']}"{title_style($v[style])}>{str_cut($v['title'],40)}</a><font size="1px" color="#777"> {str_cut($v['user_name'],30,"")}</font></li>			{/loop}			{/pc}		</ul>		</div>	</div>	<div class="bk15 hr"></div>		<div class="ads">		<div class="col-left">			<div class="col-left">					<div style="margin-top:2px">			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=58"></script>			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=63"></script>			   	    </div>			   	    <div style="margin-top:2px">			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=59"></script>			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=64"></script>			   	    </div>			   	    <div style="margin-top:2px">			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=60"></script>			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=65"></script>			   	    </div>			   	    <div style="margin-top:2px">			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=61"></script>			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=66"></script>			   	    </div>			   	    <div style="margin-top:2px">			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=62"></script>			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=67"></script>			   	    </div>			</div>		 </div>	</div>    <div class="bk10"></div>        <div class="box cat-area" style=" margin-right:10px">		<h5 class="title-1">			下载<a class="more" href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=50">更多>></a>		</h5>				<div class="content">				{pc:content  action="lists" catid="50"  order="updatetime DESC" thumb="1" num="1" return="info"}				{loop $info $v}				<p>						<img src="{thumb($v[thumb],90,0)}" width="90" height="60"/>						    <strong><a href="{$v['url']}" target="_blank" title="{$v['title']}"{title_style($v[style])}>{str_cut($v['title'],28)}</a></strong><br/>{str_cut($v['description'],100)}						</p>			{/loop}		{/pc}                				<div class="bk15 hr"></div>						{pc:content action="lists" catid="50"  num="5" order="id DESC" return="info"}		<ul class="list lh24 f14">		{loop $info $v}			<li>·<a href="{$v['url']}" target="_blank" title="{$v['title']}"{title_style($v[style])}>{str_cut($v['title'],40)}</a></li>		{/loop}		</ul>		{/pc}				</div>	</div>	  		    	<!--
-        {loop subcat(0,0,0,$siteid) $r}
-        {if $r[catid] != 46}
-        {php $num++}        		
-        <div class="box cat-area" {if $num%2!=0}style=" margin-right:10px"{/if}>
-        		<h5 class="title-1">{$r[catname]}<a href="{$r[url]}" class="more">更多>></a></h5>
-             <div class="content">			
-             {pc:content  action="lists" catid="$r[catid]" moreinfo="1" order="updatetime DESC" thumb="1" num="1" return="info"}
-             {loop $info $v}				
-             	<p>				
-             		<img src="{thumb($v[thumb],90,0)}" width="90" height="60"/>
-                    <strong><a href="{$v['url']}" target="_blank" title="{$v['title']}"{title_style($v[style])}>{str_cut($v['title'],28)}</a></strong><br />{str_cut($v['description'],100)}
-                </p>
-              {/loop}
-              {/pc}                
-                <div class="bk15 hr"></div>				
-                {pc:content action="lists" catid="$r[catid]" moreinfo="1" num="5" order="id DESC" return="info"}				
-
-                <ul class="list lh24 f14">
-                {loop $info $v}
-                	<li>·<a href="{$v['url']}" target="_blank" title="{$v['title']}"{title_style($v[style])}>{str_cut($v['title'],40)}</a><font  size="1px"  color="#777"> {str_cut($v['copyfrom'],50)}</font></li>
-                {/loop}
+       </div>
+       <div class="milldBox wid28">
+         <div class="moduleBox hei27">
+             <h2><a href="{APP_PATH}index.php?m=yp&c=index&a=model&modelid=17" class="more">更多</a><strong>最新产品</strong></h2>
+             <div class="newPr">
+                 <ul>
+                    {pc:yp action="lists" modelid="17" num="4" thumb="1" order="id DESC"}
+                    {loop $data $r}
+                    <li><a href="{$r['url']}"><img src="{thumb($r[thumb],120,80)}"></a><p><a href="{$r['url']}">{str_cut($r['title'], 30)}</a></p></li>
+                    {/loop}
+                    {/pc}
+                 </ul>
+             </div>
+        </div>
+        <div class="moduleBox hei27">
+             <h2><a href="{APP_PATH}index.php?m=yp&c=index&a=lists&modelid=18" class="more">更多</a><strong>最新商机</strong></h2>
+             <div class="chanceBox">
+                 <ul>
+                    {pc:yp action="lists" modelid="18" num="7" order="id DESC"}
+                    {loop $data $r}
+                     <li class="clearfix"><span>{date("m-d",$r[updatetime])}</span><em>[{$r['tid']}]</em><a href="{$r['url']}">{str_cut($r['title'], 60)}</a></li>
+                    {/loop}
+                    {/pc}
+                 </ul>
+             </div>
+        </div>
+       </div>
+       <div class="rightBox wid27">
+              <div class="moduleBox loginBox">
+                <h2><a href="">新会员注册</a><strong>会员登录</strong></h2>
+                <ul>
+                    <li>
+                      <dl>
+                         <dd class="sr"><input type="text" class="txt" value="用户名" onFocus="if (value=='用户名'){value='';this.style.color='#333'}" onBlur="if(!value){value=defaultValue;this.style.color='#aaa'}">
+                         <input type="text" class="txt" value="密码" onFocus="if (value=='密码'){value='';this.style.color='#333'}" onBlur="if(!value){value=defaultValue;this.style.color='#aaa'}"></dd>
+                         <dd><button class="login">登录</button></dd>
+                      </dl>
+                    </li>
+                    <li><em id="recode"></em><span class="cl_aa">记住密码</span><a href="" class="fd_p">找回密码</a></li>
                 </ul>
-                {/pc}
-            </div>
-        </div>
-        {if $num%2==0}<div class="bk10"></div>{/if}
-                {if $num%2 == 0}
-		  <div class="ads">
-	    	    <div class="col-left">		    	    <div class="col-left">	  				<div style="margin-top:2px">			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=58"></script>			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=63"></script>		    	    </div>		    	    <div style="margin-top:2px">			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=59"></script>			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=64"></script>		    	    </div>		    	    <div style="margin-top:2px">			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=60"></script>			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=65"></script>		    	    </div>		    	    <div style="margin-top:2px">			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=61"></script>			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=66"></script>		    	    </div>		    	    <div style="margin-top:2px">			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=62"></script>			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=67"></script>		    	    </div>	  		</div>	    	    </div>
-  		  </div>  		  <div class="bk10"></div>
-		{/if}
-                {/if}
-		{/loop}
-        -->	
-						<div class="box cat-area" >			<h5 class="title-1">				企业样本<a class="more" href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=105&siteid={$siteid}">更多>></a>			</h5>		    <div class="content">		    	{pc:yp action="lists" modelid="21" thumb="1" order="id DESC" num="1" }		    	<?php //debug_print($data)?>				{loop $data $r}					    		<p>					    <img width="90" height="60" src="{$r['thumb']}">					    <strong>					    <a style="" title="{$r['title']}" target="_blank" href="{$r['url']}">{str_cut($r['title'], 60)}</a>					    </strong><font size="1px" color="#777">{str_cut(get_company_by_username($r['username']), 30,"")}</font>					    <br>{str_cut($r['description'], 60)}					</p>				<div class="bk15 hr"></div>												<ul class="list lh24 f14">								{/loop}				{/pc}									{pc:yp action="lists" modelid="21" order="id DESC" num="5"}					{loop $data $r}					<?php //print_r("<pre>");print_r($r); ?>					<li>						·						<a style="" title="123" target="_blank" href="{$r['url']}">{str_cut($r['title'], 60)}</a>						<font size="1px" color="#777"> {str_cut(get_company_by_username($r['username']), 30,"")}</font>					</li>					{/loop}				{/pc}				</ul>						    </div>		</div>				<div class="bk10"></div>		<div class="ads">		   	<div class="col-left">		   		<div style="margin-top:2px">			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=68"></script>			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=73"></script>		    	    </div>		    	    <div style="margin-top:2px">			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=69"></script>			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=74"></script>		    	    </div>		    	    <div style="margin-top:2px">			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=70"></script>			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=75"></script>		    	    </div>		    	    <div style="margin-top:2px">			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=71"></script>			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=76"></script>		    	    </div>		    	    <div style="margin-top:2px">			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=72"></script>			    	    <script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=77"></script>		    	    </div>		   	</div>	  	</div>
-    </div>	  		  
-    <div class="col-auto">
-    	<div class="box">
-        	 <h5 class="title-2">公告<a href="" class="more">&nbsp;</a></h5>
-             <div class="content">
-                {pc:announce  action="lists" siteid="$siteid" num="2"}
-                <ul class="list lh24 f14">
+             </div>
+             <div class="scrollNews" id="notice">
+                <h3>最新通告</h3>
+                <ul>
+                   {pc:content action="position" posid="9" order="id DESC" num="10" cache="3600"}
                    {loop $data $r}
-                     <li> <a href="{APP_PATH}index.php?m=announce&c=index&a=show&aid={$r['aid']}">{$r['title']}</a></li>
+                     <li><a href="{$v[url]}">{$r['title']}</a></li>
                    {/loop}
+                   {/pc}
                 </ul>
-                {/pc}
+             </div>
+            <div class="moduleBox hei07">
+               <div class="sortPr clearfix">
+                  <h3>产品分类</h3>
+                  <ul class="clearfix">
+                    <?php pc_base::load_app_func('global','yp');?>
+                    <?php $arr_parentid = yp_subcat(0, 17);?>
+                    {loop $arr_parentid $r}
+                    <li><a href="{$r['url']}">{$r['catname']}</a></li>
+                    {/loop}
+                  </ul>
+               </div>
             </div>
-        </div>						 <div class="col-auto">		 <div class="bk10"></div>    	<div class="box">        	 <h5 class="title-2">会员使用手册<a href="" class="more">&nbsp;</a></h5>             <div class="content">			    <ul class="list lh24 f14">                     <li> <a href="http://oss.aliyuncs.com/lszx/upload/%E4%BC%9A%E5%91%98%E6%93%8D%E4%BD%9C%E8%AF%B4%E6%98%8E.rar" target="_blank">点击下载！</a></li>                </ul>            </div>        </div>        </div>		
-        
-        {pc:maillist  action="get_wzz" siteid="$siteid"}
-        {if (!empty ($data['wzz']) && $data['is_activate'])}
-        <div class="bk10"></div>
-        <div class="box" style="margin:0; padding:0">
-            <h5 class="title-2">订阅</h5>
-            <div class="content special" style="padding:2px">
-                    <iframe frameborder="0" height="100" width="100%" scrolling="no" style="overflow:hidden" src="http://o.sdo.com/dyFrame.ext?css=tint&o={$data['wzz']}"></iframe>
-            </div>
+           <div class="moduleBox hei27 bidding">
+             <h2><a href="" class="more">更多</a><strong>招标信息</strong></h2>
+             <div>
+                 <ul>
+                    {pc:content action="lists" catid="386" num="5" order="updatetime DESC"}
+                    {loop $data $r}
+                    <li class="clearfix"><span>{date("m-d",$r[updatetime])}</span><a href="{$r['url']}">{$r['title']}</a></li>
+                    {/loop}
+                    {/pc}
+                 </ul>
+             </div>
         </div>
-        {/if}   
-        {/pc}
-        
-        <div class="bk10"></div>
-        <!--
-        <div class="box">
-        	<h5 class="title-2">专题<a href="{APP_PATH}index.php?m=special&c=index&a=special&siteid={$siteid}" class="more">更多>></a></h5>
-            <div class="content special">
-            {pc:special  action="lists" siteid="$siteid" elite="1" listorder="3" num="2"}
-            {loop $data $r}
-            	{if $n!=1}<div class="hr bk15"></div>{/if}
-                <p style="margin:0">
-             		<a href="{$r[url]}"><img src="{$r[thumb]}" width="90" height="70" /></a>
-                    <strong><a href="{$r[url]}">{str_cut($r[title],'18')}</a></strong><br />{str_cut($r['description'],50)}
-                </p>
-            {/loop}
-            {/pc}
-            </div>
+
+       </div>
+      </div>
+      <div class="bannerHlist">
+         <a href=""><img src="{IMG_PATH}newlook_v20140211/bn.png"></a><a href=""><img src="{IMG_PATH}newlook_v20140211/bn.png"></a><a href="" class="last"><img src="{IMG_PATH}newlook_v20140211/bn.png"></a>
+      </div>
+      <div class="in_mid clearfix">
+        <div class="leftBox wid32">
+        <div class="moduleBox hei38">
+             <h2><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=51" class="more">更多</a><strong>行业新闻</strong><span><a href="">我要发布</a></span></h2>
+             <div class="newinfo">
+                 <ul>
+                    {pc:content action="lists" catid="51" thumb="1" num="1" order="updatetime DESC"}
+                    {loop $data $r}
+                    <li class="clearfix"><h3><a href="{$r['url']}">{str_cut($r[title],36,'')}...</a></h3><a href="{$r['url']}"><img src="{thumb($r[thumb],160,120)}"></a><p class="note">{str_cut($r[description],55,'')}...</p></li>
+                    {/loop}
+                    {/pc}
+                    {pc:content action="lists" catid="51" thumb="3" num="1" order="updatetime DESC"}
+                    {loop $data $r}
+                    {if $n != 1}
+                    <li><h3><a href="{$r['url']}">{str_cut($r[title],36,'')}</a></h3><p class="list">{str_cut($r[description],55,'')}...</p></li>
+                    {/if}
+                    {/loop}
+                    {/pc}
+                 </ul>
+             </div>
         </div>
-        -->
-        <div class="bk10"></div>
-        <div class="box">
-            <h5 class="title-2"><span class="rt fn f12 tab SwapTab"><span class="fb">热点</span> | <span >评论</span> | <span>关注</span></span>排行</h5>
-            <div class="tab-content">
-            <ul class="content digg">
-			{pc:content action="hits" catid="46" num="10" order="views DESC"}
-				{loop $data $r}
-					<li><a href="{$r[url]}" target="_blank" title="{$r[title]}"{title_style($r[style])}>{$r[title]}</a></li>
-				{/loop}
-			{/pc}
-            </ul>
-            <ul class="content digg hidden">
-			{pc:comment action="bang" num="10" cache="3600"}
-				{loop $data $r}
-					<li><a href="{$r[url]}" target="_blank">{$r[title]}</a></li>
-				{/loop}
-			{/pc}
-            </ul>
-            <ul class="content digg hidden">
-			{pc:content action="hits" catid="48" num="10" order="views DESC"}
-				{loop $data $r}
-					<li><a href="{$r[url]}" target="_blank">{$r[title]}</a></li>
-				{/loop}
-			{/pc}
-            </ul>
-            </div>
-        </div><div class="bk10"></div>        		<div class="box">            <h5 class="title-2">产品种类<a href="{APP_PATH}index.php?m=yp&c=index&a=model&modelid=17&siteid={$siteid}" class="more">更多>></a></h5>			<ul class="content digg">			        			        <?php pc_base::load_app_func('global','yp');?>			        <?php $arr_parentid = yp_subcat(0, 17);?>			        {loop $arr_parentid $r}			        		<li><a href="{$r['url']}" target="_blank">{$r['catname']}</a></li>			        {/loop}			                   </ul>        </div>        <div class="bk10"></div>		
-        <div class="box">
-            <h5 class="title-2">调查问卷<a href="{APP_PATH}index.php?m=vote&c=index&siteid={$siteid}" class="more">更多>></a></h5>
- 
-			<script language="javascript" src="{APP_PATH}index.php?m=vote&c=index&a=show&action=js&subjectid=1&type=3"></script>
+       </div>
+       <div class="milldBox wid32">
+           <div class="moduleBox hei38">
+               <h2><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=48" class="more">更多</a><strong>会员业绩</strong><span><a href="">我要发布</a></span></h2>
+               <div class="recomBox user">
+                 <ul>
+                    {pc:content  action="lists" catid="48" moreinfo="1" order="updatetime DESC" thumb="1" num="1" return="info"}
+                    {loop $info $v}
+                    <li class="clearfix"><a href="{$v['url']}"><img src="{thumb($v[thumb],90,0)}"></a><h3><a href="{$v['url']}">{str_cut($v['title'],28)}</a></h3><p>{str_replace("|0","",str_cut($v['copyfrom'],30,""))}...</p></li>
+                    {/loop}
+                    {/pc}
+                    {pc:content action="lists" catid="48" moreinfo="1" num="6" order="updatetime DESC" return="info"}
+                    <ul class="list lh24 f14">
+                    {loop $info $v}
+                        <li class="clearfix"><a href="{$v['url']}" class="tit">{str_cut($v['title'],40)}</a><span>{str_replace("|0","",str_cut($v['copyfrom'],30,""))}...</span></li>
+                    {/loop}
+                    </ul>
+                    {/pc}
+                 </ul>
+             </div>
+           </div>
+       </div>
+       <div class="rightBox wid32">
+           <div class="moduleBox hei38">
+               <h2><a href="{APP_PATH}index.php?m=yp&c=index&a=company&siteid={$siteid}" class="more">更多</a><strong>企业样本</strong><span><a href="">我要发布</a></span></h2>
+               <div class="imgList">
+                 <ul class="clearfix">
+                    {pc:yp action="get_company" num="4" thumb="1" order="regtime DESC" elite="1" }
+                    {loop $data $r}
+                    <li><a href="{$v['url']}"><img src="{$r['logo']}"></a><p><a href="{$r['url']}">{str_cut($r['companyname'], 60)}</a></p></li>
+                    {/loop}
+                    {/pc}
+                 </ul>
+             </div>
+           </div>
+       </div>
+      </div>
+       <div class="bannerHlist">
+         <a href=""><img src="{IMG_PATH}newlook_v20140211/bn.png"></a><a href="" class="last"><img src="{IMG_PATH}newlook_v20140211/bn1.png"></a>
+      </div>
+      <div class="in_tab">
+          <div class="leftBox wid32">
+              <div class="tab_menu">
+                   <a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=49" class="more">更多</a>
+                    <ul>
+                        <li class="selected">招聘</li>
+                        <li>求职</li>
+                    </ul>
+                </div>
+            <div class="tab_box hei29">
+                <div class="zp">
+                   <ul>
+                        {pc:content action="lists" catid="106" num="5" order="id DESC"}
+                        {loop $data $r}
+                        <li><h3><a href="{$v['url']}">{$v['title']}</a></h3><p><span class="time">{date("Y-m-d",$r[updatetime])}</span>{$v['company_name']}</p></li>
+                        {/loop}
+                        {/pc}
+                   </ul>
+                </div>
+             <div class="zp">
+                   <ul>
+                        {pc:content action="lists" catid="107" num="5" order="id DESC"}
+                        {loop $data $r}
+                        <li><h3><a href="{$v['url']}">{$v['title']}</a></h3><p><span class="time">{date("Y-m-d",$r[updatetime])}</span>{$v['company_name']}</p></li>
+                        {/loop}
+                        {/pc}
+                   </ul>
+                </div>
         </div>
-    </div>
-    <div class="bk10"></div>
-	
-	<div class="box blogroll ylink">
-    	<h5><a href="{APP_PATH}index.php?m=link&siteid={$siteid}" hidefocus="true" class="rt">更多>></a>友情链接<a href="{APP_PATH}index.php?m=link&c=index&a=register&siteid={$siteid}" class="red">申请链接</a></h5>
-        <div class="bk10"></div>
-	<ul class="colli imgul">
-        {pc:link  action="type_list" siteid="$siteid" linktype="1" order="listorder DESC" num="30" return="pic_link"}
-        {loop $pic_link $v}
-        <li><a href="{$v['url']}" title="{$v['name']}" target="_blank"><img src="{$v[logo]}" width="88" height="31" /></a></li>
-        {/loop}
-        {/pc}
-    </ul>
-     {pc:link  action="type_list" siteid="$siteid" order="listorder DESC" num="10" return="dat"}
-     <div class="bk10"></div>
-	<div class="linka">
-		{loop $dat $v}
-              {if $type==0}
-              <a href="{$v[url]}" target="_blank">{$v[name]}</a> |
-              {else}
-              <a href="{$v[url]}" target="_blank"><img src="{$v[logo]}" width="88" height="31" style="border: 1px solid #FFBE7A;"></a> 
-              {/if}
-		{/loop}
- 	</div>
-	{/pc}
+       </div>
+       <div class="rightBox wid65">
+              <div class="tab_menu">
+                   <a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=50" class="more">更多</a>
+                   <span>下载</span>
+                    <ul>
+                        <li class="selected">资料</li>
+                        <li>文章</li>
+                        <li>图纸</li>
+                        <li>图片</li>
+                        <li>样本</li>
+                        <li>专题</li>
+                        <!-- <li>搜索</li> -->
+                    </ul>
+                </div>
+            <div class="tab_box hei29">
+                <div class="dowL">
+                   <ul>
+                        {pc:content action="lists" catid="99" num="7" order="id DESC"}
+                        {loop $data $r}
+                        <li><p><span class="time">{date("Y-m-d",$r[updatetime])}</span><a href="{$v['url']}">{$v['title']}</a></p></li>
+                        {/loop}
+                        {/pc}
+                   </ul>
+                </div>
+                <div class="dowL">
+                   <ul>
+                        {pc:content action="lists" catid="98" num="7" order="id DESC"}
+                        {loop $data $r}
+                        <li><p><span class="time">{date("Y-m-d",$r[updatetime])}</span><a href="{$v['url']}">{$v['title']}</a></p></li>
+                        {/loop}
+                        {/pc}
+                   </ul>
+                </div>
+                <div class="dowL">
+                   <ul>
+                        {pc:content action="lists" catid="97" num="7" order="id DESC"}
+                        {loop $data $r}
+                        <li><p><span class="time">{date("Y-m-d",$r[updatetime])}</span><a href="{$v['url']}">{$v['title']}</a></p></li>
+                        {/loop}
+                        {/pc}
+                   </ul>
+                </div>
+                <div class="dowL">
+                   <ul>
+                        {pc:content action="lists" catid="100" num="7" order="id DESC"}
+                        {loop $data $r}
+                        <li><p><span class="time">{date("Y-m-d",$r[updatetime])}</span><a href="{$v['url']}">{$v['title']}</a></p></li>
+                        {/loop}
+                        {/pc}
+                   </ul>
+                </div>
+                <div class="dowL">
+                   <ul>
+                        {pc:content action="lists" catid="101" num="7" order="id DESC"}
+                        {loop $data $r}
+                        <li><p><span class="time">{date("Y-m-d",$r[updatetime])}</span><a href="{$v['url']}">{$v['title']}</a></p></li>
+                        {/loop}
+                        {/pc}
+                   </ul>
+                </div>
+                <div class="dowL">
+                   <ul>
+                        {pc:content action="lists" catid="102" num="7" order="id DESC"}
+                        {loop $data $r}
+                        <li><p><span class="time">{date("Y-m-d",$r[updatetime])}</span><a href="{$v['url']}">{$v['title']}</a></p></li>
+                        {/loop}
+                        {/pc}
+                   </ul>
+                </div>
+                <!-- <div class="dowL">
+                   <ul>
+                     <li>
+                         <p><span class="time">2013-09-30</span><a href="">7成都传承景观规划设计有限公司</a></p>
+                      </li>
+                      <li>
+                         <p><span class="time">2013-09-30</span><a href="">7成都传承景观规划设计有限公司</a></p>
+                      </li>
+                      <li>
+                         <p><span class="time">2013-09-30</span><a href="">7成都传承景观规划设计有限公司</a></p>
+                      </li>
+                      <li class="last">
+                         <p><span class="time">2013-09-30</span><a href="">7成都传承景观规划设计有限公司</a></p>
+                      </li>
+                      <li>
+                         <p><span class="time">2013-09-30</span><a href="">成都传承景观规划设计有限公司</a></p>
+                      </li>
+                      <li>
+                         <p><span class="time">2013-09-30</span><a href="">成都传承景观规划设计有限公司</a></p>
+                      </li>
+                      <li class="last">
+                         <p><span class="time">2013-09-30</span><a href="">成都传承景观规划设计有限公司</a></p>
+                      </li>
+                   </ul>
+                </div> -->
+        </div>
+       </div>
+      </div>
+      <div class="clear"></div>
+      <div class="adsList">
+         <ul>
+            <li class="clearfix"><a href=""><img src="{IMG_PATH}newlook_v20140211/ad2.png"></a><a href=""><img src="{IMG_PATH}newlook_v20140211/ad2.png"></a><a href=""><img src="{IMG_PATH}newlook_v20140211/ad2.png"></a><a href=""><img src="{IMG_PATH}newlook_v20140211/ad2.png"></a><a href="" class="last"><img src="{IMG_PATH}newlook_v20140211/ad2.png"></a></li>
+            <li class="clearfix"><a href=""><img src="{IMG_PATH}newlook_v20140211/ad2.png"></a><a href=""><img src="{IMG_PATH}newlook_v20140211/ad2.png"></a><a href=""><img src="{IMG_PATH}newlook_v20140211/ad2.png"></a><a href=""><img src="{IMG_PATH}newlook_v20140211/ad2.png"></a><a href="" class="last"><img src="{IMG_PATH}newlook_v20140211/ad2.png"></a></li>
+            <li class="clearfix"><a href=""><img src="{IMG_PATH}newlook_v20140211/ad2.png"></a><a href=""><img src="{IMG_PATH}newlook_v20140211/ad2.png"></a><a href=""><img src="{IMG_PATH}newlook_v20140211/ad2.png"></a><a href=""><img src="{IMG_PATH}newlook_v20140211/ad2.png"></a><a href="" class="last"><img src="{IMG_PATH}newlook_v20140211/ad2.png"></a></li>
+            <li class="clearfix"><a href=""><img src="{IMG_PATH}newlook_v20140211/ad2.png"></a><a href=""><img src="{IMG_PATH}newlook_v20140211/ad2.png"></a><a href=""><img src="{IMG_PATH}newlook_v20140211/ad2.png"></a><a href=""><img src="{IMG_PATH}newlook_v20140211/ad2.png"></a><a href="" class="last"><img src="{IMG_PATH}newlook_v20140211/ad2.png"></a></li>
+         </ul>
+      </div>
+      <div >
+         <div class="moduleBox">
+            <h2><a href="" class="more">更多</a><strong>友情链接</strong><span><a href="">我要申请</a></span></h2>
+            <div class="logoList">
+                <ul>
+                    <li class="clearfix">
+                    {pc:link  action="type_list" siteid="$siteid" linktype="1" thumb="1" order="listorder DESC" num="27" return="pic_link"}
+                    {loop $pic_link $v}
+                    {if $n <= 9}<a href="{$v['url']}"><img src="{$v[logo]}"></a>{/if}
+                    {/loop}
+                    {/pc}</li>
+                    <li class="clearfix">
+                    {pc:link  action="type_list" siteid="$siteid" linktype="1" thumb="1" order="listorder DESC" num="27" return="pic_link"}
+                    {loop $pic_link $v}
+                    {if $n > 9 && $n <= 18}<a href="{$v['url']}"><img src="{$v[logo]}"></a>{/if}
+                    {/loop}
+                    {/pc}</li>
+                    <li class="clearfix">
+                    {pc:link  action="type_list" siteid="$siteid" linktype="1" thumb="1" order="listorder DESC" num="27" return="pic_link"}
+                    {loop $pic_link $v}
+                    {if $n > 18 && $n <= 27}<a href="{$v['url']}"><img src="{$v[logo]}"></a>{/if}
+                    {/loop}
+                    {/pc}</li>
+                    <li>
+                    {pc:link  action="type_list" siteid="$siteid" order="listorder DESC" num="10" return="dat"}
+                    {loop $dat $v}
+                    <a href="{$v['url']}">{$v[title]}</a>
+                    {/loop}
+                    {/if}
+                    </li>
+                </ul>
+            </div>
+         </div>
+      </div>
+   </div>
 </div>
-</div>
-<script type="text/javascript"> 
-$(function(){
-	new slide("#main-slide","cur",310,260,1);//焦点图
-	new SwapTab(".SwapTab","span",".tab-content","ul","fb");//排行TAB
-})
-</script><script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=41"></script><script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=42"></script><script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=43"></script><script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=44"></script><script language="javascript" src="{APP_PATH}index.php?m=poster&c=index&a=show_poster&id=45"></script>
+<!--Ebody-->
 {template "content","footer"}
