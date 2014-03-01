@@ -17,6 +17,7 @@ class yp_content_model extends model {
 		$this->modelid = $modelid;
 		$this->table_name = $this->db_tablepre.$this->model[$modelid]['tablename'];
 		$this->model_tablename = $this->model[$modelid]['tablename'];
+		//echo '模型相关信息：'.$this->modelid." ".$this->table_name." ".$this->model_tablename;exit;
 
 	}
 

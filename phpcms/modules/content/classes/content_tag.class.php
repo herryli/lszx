@@ -238,6 +238,7 @@ class content_tag {
 		if(isset($data['expiration']) && $data['expiration']==1) $sql .= '(`expiration` >= \''.SYS_TIME.'\' OR `expiration` = \'0\' ) AND ';
 		$sql .= "`posid` = '$posid' AND `siteid` = '".$siteid."'";
 		$pos_arr = $this->position->select($sql, '*', $data['limit'],$order);
+		//echo $sql;
 		//print_r("<pre>");print_r($pos_arr);exit;
 		//debug_print($pos_arr);
 		if(!empty($pos_arr)) {
@@ -254,6 +255,7 @@ class content_tag {
 				$array[$key]['listorder'] = $info['listorder'];
 			}
 		}
+		//print_r("<pre>");print_r($array);exit;
 		return $array;
 	}
 	/**
