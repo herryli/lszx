@@ -49,7 +49,7 @@
                     {pc:content action="lists" catid="$v[catid]" thumb="1" num="2" order="id DESC"}
                     {loop $data $v}
                         <dd><a href="{$v[url]}"><img src="{thumb($v[thumb],80,60)}"></a><p class="pd">{$v[title]}</p>
-                        <p class="pd"><strong><a href="{$v[url]}" class="cl_09">{str_cut($v[description],116,'..')</a></strong></p></dd>
+                        <p class="pd"><strong><a href="{$v[url]}" class="cl_09">{str_cut($v[description],116,'..')}</a></strong></p></dd>
                     {/loop}
                     {/pc}
                      </dl>
@@ -100,7 +100,7 @@
           <h2><strong>频道总排行</strong></h2>
           <div class="queue">
             <ul>
-                pc:content action="hits" catid="$catid" num="10" order="views DESC" cache="3600"}
+                {pc:content action="hits" catid="$catid" num="10" order="views DESC" cache="3600"}
                 {loop $data $v}
                     <li><em {if $n==1}class="fi"{/if}{if $n==2}class="se"{/if}{if $n==3}class="th"{/if} >{$n}</em>{$v[title]}</a></li>
                 {/loop}
