@@ -15,28 +15,28 @@ a:hover{text-decoration:underline}
 #siteSearch .tab ul{overflow:hidden;}
 #siteSearch .tab li{float:left;color:#999;}
 #siteSearch .tab li a{height:24px;color:#999; margin:0 8px;float:left;}
-#siteSearch .tab li a.on{color:#0092b8;font-weight:bold; background:url(../images/common/arrow_t.png) no-repeat center 18px;}
+#siteSearch .tab li a.on{color:#0092b8;font-weight:bold; background:url(/statics/images/newlook_v20140211/common/arrow_t.png) no-repeat center 18px;}
 #siteSearch .panel,#siteSearch .panel .combobox{position:relative}
 #siteSearch .panel{*top:-1px}
-#siteSearch .panel .combobox i{ position:absolute; height:16px; width:16px; background:url(../images/common/icon_png.png) 0 0 no-repeat;left:16px;top:5px;}
+#siteSearch .panel .combobox i{ position:absolute; height:16px; width:16px; background:url(/statics/images/newlook_v20140211/common/icon_png.png) 0 0 no-repeat;left:16px;top:5px;}
 #siteSearch .input-wrap{height:23px;width:260px;border:1px solid #5fb8d0;line-height:23px;padding-left:30px;color:#ccc; margin-left:8px;}
-#siteSearch .panel button{position:absolute;right:0;bottom:0;width:66px;color:#fff;height:25px;font-weight:bold;line-height:24px; background:url(../images/common/bg_png.png) repeat-x 0 -52px;cursor:pointer;border:none; text-shadow:0px 0 1px rgba(0,0,0,0.4); *bottom:1px}
+#siteSearch .panel button{position:absolute;right:0;bottom:0;width:66px;color:#fff;height:25px;font-weight:bold;line-height:24px; background:url(/statics/images/newlook_v20140211/common/bg_png.png) repeat-x 0 -52px;cursor:pointer;border:none; text-shadow:0px 0 1px rgba(0,0,0,0.4); *bottom:1px}
 /*Nav*/
-#siteNav{height:50px;background:url(../images/common/bg_png.png) repeat-x 0 0;}
+#siteNav{height:50px;background:url(/statics/images/newlook_v20140211/common/bg_png.png) repeat-x 0 0;}
 #siteNav-con{width:1000px; margin:0 auto;padding:0 0 0 20px;font-size:14px;}
 #siteNav-con li{float:left;line-height:26px;position:relative; margin-top:12px;}
 #siteNav-con a{color:#333;margin:0 6px; padding:0 10px; float:left}
 #siteNav-con a.on{color:#fff; font-weight:bold; height:26px; background:#0092b8}
-#siteNav-con a.on i{position:absolute;width:9px;height:5px;background:url(../images/common/icon_png.png) no-repeat -20px 0;bottom:-5px;left:40%}
+#siteNav-con a.on i{position:absolute;width:9px;height:5px;background:url(/statics/images/newlook_v20140211/common/icon_png.png) no-repeat -20px 0;bottom:-5px;left:40%}
 #siteNav-con a.on:hover{ text-decoration:none}
 #siteNav-con li.fr{ float:right; font-size:14px; font-weight:bold}
 #siteNav-con li.fr span{ float:left; padding-right:10px;}
 #siteNav-con li.fr a{ float:none;color:#0092b8; padding:0}
-#siteNav-con li em{ display:inline-block; width:18px; height:18px; background:url(../images/common/icon_png.png) no-repeat 0 -58px; margin-right:10px; vertical-align:middle}
+#siteNav-con li em{ display:inline-block; width:18px; height:18px; background:url(/statics/images/newlook_v20140211/common/icon_png.png) no-repeat 0 -58px; margin-right:10px; vertical-align:middle}
 #siteNav-con li.fr span a{ color:#ff6600; font-family:Arial}
 /*content*/
-#content{background:url(../images/common/bg_bd.png) repeat-x;}
-.contentBox{width:990px;margin:0 auto; background:url(../images/common/bg_con.png) repeat-x top #fafafa; padding:0 5px 12px 5px}
+#content{background:url(/statics/images/newlook_v20140211/common/bg_bd.png) repeat-x;}
+.contentBox{width:990px;margin:0 auto; background:url(/statics/images/newlook_v20140211/common/bg_con.png) repeat-x top #fafafa; padding:0 5px 12px 5px}
 
 /*footer*/
 #footer{ background:#e6eef3; height:165px;}
@@ -59,7 +59,7 @@ a:hover{text-decoration:underline}
 .fr{ float:right}
 .fn{ font-weight:normal}
 
-.btn_s{background:url(../images/common/bg_png.png) repeat-x 0 -310px; text-align:center;font-weight:bold; color:#fff; border:none; border-radius:3px; cursor:pointer}
+.btn_s{background:url(/statics/images/newlook_v20140211/common/bg_png.png) repeat-x 0 -310px; text-align:center;font-weight:bold; color:#fff; border:none; border-radius:3px; cursor:pointer}
 .n_28{ height:28px; width:120px; line-height:28px;}
 .n_64{ height:46px; width:160px; line-height:46px; background-position:0 -340px;}
 

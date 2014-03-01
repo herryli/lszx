@@ -10,17 +10,17 @@ a:hover{text-decoration:underline}
 #site-nav{ height:30px;line-height:30px;background:#f4f4f4; overflow:hidden}
 #site-nav .content a{ margin:0 5px}
 
-#banner{height:205px; background:url(../images/repeat_x.jpg) no-repeat center center; padding-top:35px;}
+#banner{height:205px; background:url(/statics/images/newlook_v20140211/repeat_x.jpg) no-repeat center center; padding-top:35px;}
 #banner img{ float:left; width:120px; height:90px; margin-right:15px;}
 #banner h2{ font:normal 32px "微软雅黑"; margin-bottom:15px;}
-#banner p{ background:url(../images/com_note.png) no-repeat; height:33px; line-height:32px; font-size:14px; width:600px; padding-left:15px; overflow:hidden}
+#banner p{ background:url(/statics/images/newlook_v20140211/com_note.png) no-repeat; height:33px; line-height:32px; font-size:14px; width:600px; padding-left:15px; overflow:hidden}
 
-#nav{ height:46px; background:url(../images/companr_bg.png) repeat-x; line-height:46px; }
+#nav{ height:46px; background:url(/statics/images/newlook_v20140211/companr_bg.png) repeat-x; line-height:46px; }
 #nav a{ font-size:14px; font-weight:bold; color:#fff; margin:0 15px;}
-                
+
 #content .content{ padding-top:15px;}
 .commonBox{ border:1px solid #c5d5e8; margin-bottom:10px;}
-.commonBox h2{ border-bottom:1px solid #c5d5e8; height:30px; line-height:30px; background:url(../images/companr_bg.png) repeat-x 0 -50px; font-size:14px; color:#263f65; padding-left:10px;}
+.commonBox h2{ border-bottom:1px solid #c5d5e8; height:30px; line-height:30px; background:url(/statics/images/newlook_v20140211/companr_bg.png) repeat-x 0 -50px; font-size:14px; color:#263f65; padding-left:10px;}
 
 .leftBox{ width:240px; float:left;}
 .rightBox{ width:730px; float:right;}

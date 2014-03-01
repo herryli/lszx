@@ -28,7 +28,7 @@
 .slider{position:absolute; width:100%}
 .slider li{display:inline;float:left;width:100%; position:relative;}
 .slider li img{width:420px; height:274px}
-.slider li p{position:absolute; height:36px; line-height:36px; width:400px;background:url(../images/common/dot.png) repeat; bottom:0; left:0; padding-left:20px; color:#fff}
+.slider li p{position:absolute; height:36px; line-height:36px; width:400px;background:url(/statics/images/newlook_v20140211/common/dot.png) repeat; bottom:0; left:0; padding-left:20px; color:#fff}
 .slider li p a{color:#fff; display:inline-block; width:270px}
 .slider li p.high{ height:62px; font-size:14px; padding-top:4px;}
 .slider li p.high span{ display:block; font-size:12px; line-height:18px;}
@@ -39,21 +39,21 @@
 .picontrol{ position:inherit; height:65px;}
 .picontrol li{ width:99px; height:65px; position:relative; padding-top:6px;}
 .picontrol li img{ width:100px; height:65px;}
-.picontrol li.on{ background:url(../images/common/icon_png.png) no-repeat 45px -90px;}
+.picontrol li.on{ background:url(/statics/images/newlook_v20140211/common/icon_png.png) no-repeat 45px -90px;}
 .picontrol li.on img{ border:4px solid #ffb400; width:92px; height:57px;}
 .picontrol li.last{ margin-right:0}
 
 
-/*板块*/ 
+/*板块*/
 .moduleBox{border:1px solid #e2e2e2;background:#fff;margin-top:6px; overflow:hidden}
 .moduleBox h2{height:40px; border-bottom:1px solid #e2e2e2;padding:0 10px 0 0; font-weight:normal;font-size:12px;}
 .moduleBox h2.bg{ background:#0092b8; color:#fff;}
 .moduleBox h2.bgy{ background:#feffe7}
-.moduleBox h2.bgimg{ background:url(../images/common/bg_png.png) repeat-x 0 -150px;}
+.moduleBox h2.bgimg{ background:url(/statics/images/newlook_v20140211/common/bg_png.png) repeat-x 0 -150px;}
 .moduleBox h2 strong{float:left;font-size:14px; color:#333; line-height:40px; padding-left:20px}
-.moduleBox h2 span{float:left;background:url(../images/common/but_bg.png) no-repeat; width:64px; height:20px; line-height:20px; text-align:center; color:#fff;margin:9px 0 0 10px;}
+.moduleBox h2 span{float:left;background:url(/statics/images/newlook_v20140211/common/but_bg.png) no-repeat; width:64px; height:20px; line-height:20px; text-align:center; color:#fff;margin:9px 0 0 10px;}
 .moduleBox h2.bg a{ color:#fff;}
-.moduleBox h2 a.more,.tab_menu a.more{float:right;background:#eee;width:40px;height:20px;color:#999;padding-left:10px; background:url(../images/common/icon_png.png) 38px -12px #eee;border-radius:3px; margin-top:10px; line-height:20px;}
+.moduleBox h2 a.more,.tab_menu a.more{float:right;background:#eee;width:40px;height:20px;color:#999;padding-left:10px; background:url(/statics/images/newlook_v20140211/common/icon_png.png) 38px -12px #eee;border-radius:3px; margin-top:10px; line-height:20px;}
 .moduleBox h2 span a,.moduleBox h2.bg strong{color:#fff;}
 .moduleBox h2.bg ul{ float:left; padding:0 15px 0 20px; line-height:40px;}
 .moduleBox h2.bg ul li{ float:left;}
@@ -61,7 +61,7 @@
 .moduleBox h2.bg a.more{ background-color:#fff;}
 .moduleBox h2 select{ float:right; margin-top:10px;}
 
-/*推荐企业*/ 
+/*推荐企业*/
 .recomBox{padding:20px 0 0 0;}
 .recomBox ul{}
 .recomBox li{padding:0 0 10px 20px;}
@@ -91,14 +91,14 @@
 .loginBox dd{float:left;padding-right:8px;}
 .loginBox dd.sr{width:157px}
 .loginBox input.txt{ height:23px; width:155px; line-height:22px;border:1px solid  #e2e2e2; background:#fff; color:#aaa;margin:10px 0}
-.loginBox  button.login{width:66px; height:68px; background:url(../images/common/bg_png.png) repeat-x 0 -78px; font: normal 18px/68px "微软雅黑";color:#fff; text-align:center; border:none; margin-top:10px; cursor:pointer}
-.loginBox li em{float:left;width:15px; height:15px;background:url(../images/common/icon_png.png) no-repeat 0 -39px; margin-right:8px; cursor:pointer}
+.loginBox  button.login{width:66px; height:68px; background:url(/statics/images/newlook_v20140211/common/bg_png.png) repeat-x 0 -78px; font: normal 18px/68px "微软雅黑";color:#fff; text-align:center; border:none; margin-top:10px; cursor:pointer}
+.loginBox li em{float:left;width:15px; height:15px;background:url(/statics/images/newlook_v20140211/common/icon_png.png) no-repeat 0 -39px; margin-right:8px; cursor:pointer}
 .loginBox li em.on{background:#0092b8}
 .loginBox li .fd_p{padding-left:30px; text-decoration:underline; color:#ff7700}
 
 /*通告*/
 .scrollNews{height:40px;border:1px solid #e2e2e2;background:#e6eef3; margin-top:6px; position:relative; overflow:hidden;}
-.scrollNews h3{float:left;background:url(../images/common/icon_png.png) no-repeat -20px -40px; width:10px; height:7px; text-indent:-99999px; margin:16px 0 0 8px}
+.scrollNews h3{float:left;background:url(/statics/images/newlook_v20140211/common/icon_png.png) no-repeat -20px -40px; width:10px; height:7px; text-indent:-99999px; margin:16px 0 0 8px}
 .scrollNews li{height:40px; line-height:40px; padding-left:30px;}
 
 /*产品分类*/
@@ -157,7 +157,7 @@
 .tab_box{ border:1px solid #e2e2e2; background:#feffe7; overflow:hidden}
 .tab_box .zp{ padding:0 10px;}
 .tab_box .zp h3{line-height:30px; font-size:14px;}
-.tab_box .zp h3 a{ color:#007ec4} 
+.tab_box .zp h3 a{ color:#007ec4}
 .tab_box .zp li{ border-bottom:1px dotted #ccc; padding:13px 5px;}
 .tab_box .zp li p{color:#999; height:16px;overflow:hidden}
 .tab_box .zp li span.time{float:right;padding-left:10px;}
