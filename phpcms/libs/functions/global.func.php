@@ -1358,11 +1358,13 @@ function go($catid,$id, $allurl = 0) {
  */
 function go_yp($modelid,$id){
 	$modelid = intval($modelid);
+	echo $modelid;
 	$id = intval($id);
 	if(!$id || !modelid) return '';
 	$db = pc_base::load_model('yp_content_model');
 	$db->set_model($modelid);
 	$r = $db->get_one(array('id'=>$id), '`url`');
+	//echo "<pre>";print_r($r);exit;
 	//if($id == 15){
 		//print_r("<pre>");print_r($r);
 	//}
