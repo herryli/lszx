@@ -3,7 +3,7 @@
 <div id="content">
   <div class="contentBox inner_bg">
     <div class="inner_nav">
-      <div><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=51">ĞÂÎÅ</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=52">¼¼Êõ</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=53">ÕĞ±ê</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=54">ÕşÎñ</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=55">Õ¹»á</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=56">»áÔ±</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=57">Ñ§»á</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=379">ÊĞ³¡</a></div>
+      <div><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=51">æ–°é—»</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=52">æŠ€æœ¯</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=53">æ‹›æ ‡</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=54">æ”¿åŠ¡</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=55">å±•ä¼š</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=56">ä¼šå‘˜</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=57">å­¦ä¼š</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=379">å¸‚åœº</a></div>
     </div>
     <div class="in_top clearfix">
       <div class="leftBox wid42">
@@ -28,7 +28,7 @@
        </div>
        <div class="rightBox wid56">
            <div class="moduleBox hei34">
-              <h2><a class="more" href="">¸ü¶à</a><strong>ĞÂÎÅ</strong></h2>
+              <h2><a class="more" href="">æ›´å¤š</a><strong>æ–°é—»</strong></h2>
               <div class="recomBox info_ns">
                  <ul>
                     {pc:content  action="position" posid="16"  thumb="1" order="listorder DESC" num="1"}
@@ -57,7 +57,7 @@
            {php if($v['type']!=0) continue;}
            {if $j%2!=0}<div>{/if}
              <div class="fl moduleBox wid35 ">
-                 <h2><a href="{$v[url]}" class="more">¸ü¶à</a><strong>{$v[catname]}</strong></h2>
+                 <h2><a href="{$v[url]}" class="more">æ›´å¤š</a><strong>{$v[catname]}</strong></h2>
                  <div class="recomBox info_ns">
                  <ul>
                     {pc:content action="lists" catid="$v[catid]" num="10" order="id DESC"}
@@ -74,7 +74,7 @@
              {/loop}
            <div class="clear"></div>
            <div class="moduleBox">
-            <h2><a href="{APP_PATH}index.php?m=yp&c=index&a=model&modelid=17&siteid={$siteid}" class="more">¸ü¶à</a><strong>ÍÆ¼ö²úÆ·</strong><span>ÎÒÒª·¢²¼</span></h2>
+            <h2><a href="{APP_PATH}index.php?m=yp&c=index&a=model&modelid=17&siteid={$siteid}" class="more">æ›´å¤š</a><strong>æ¨èäº§å“</strong><span>æˆ‘è¦å‘å¸ƒ</span></h2>
               <div class="newPr pd_list">
                  <ul>
                     {pc:yp action="position" posid="8" modelid="17" thumb="1" num="5" order="listorder ASC" expiration="1"}
@@ -94,7 +94,7 @@
               <a href="" class="last"><img src="{IMG_PATH}newlook_v20140211/bn3.png"></a>
            </div>
          <div class="moduleBox">
-            <h2><strong>ÆµµÀ×ÜÅÅĞĞ</strong></h2>
+            <h2><strong>é¢‘é“æ€»æ’è¡Œ</strong></h2>
             <div class="queue">
                <ul>
                 {pc:content action="hits" catid="$catid" num="10" order="views DESC" cache="3600"}
@@ -106,7 +106,7 @@
             </div>
          </div>
          <div class="moduleBox">
-            <h2><strong>ÆµµÀ±¾ÔÂÅÅĞĞ</strong></h2>
+            <h2><strong>é¢‘é“æœ¬æœˆæ’è¡Œ</strong></h2>
             <div class="queue">
                <ul>
                 {pc:content action="hits" catid="$catid" num="8" order="monthviews DESC" cache="3600"}
