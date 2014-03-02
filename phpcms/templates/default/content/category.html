@@ -3,7 +3,13 @@
 <div id="content">
   <div class="contentBox inner_bg">
     <div class="inner_nav">
-      <div><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=51">新闻</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=52">技术</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=53">招标</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=54">政务</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=55">展会</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=56">会员</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=57">学会</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=379">市场</a></div>
+      <div>
+      {pc:content action="category" catid="$top_parentid" num="15" siteid="$siteid" order="listorder ASC"}
+	  {loop $data $r}
+	  <a href="{$r[url]}">{$r[catname]}</a>
+	  {/loop}
+      {/pc}
+      <!-- <a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=51">新闻</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=52">技术</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=53">招标</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=54">政务</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=55">展会</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=56">会员</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=57">学会</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=379">市场</a> --></div>
     </div>
     <div class="in_top clearfix">
       <div class="leftBox wid42">
