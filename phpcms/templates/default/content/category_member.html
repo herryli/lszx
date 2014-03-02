@@ -95,13 +95,14 @@
             <h2><strong>频道总排行</strong></h2>
             <div class="queue">
                <ul>
-                pc:content action="hits" catid="$catid" num="10" order="views DESC" cache="3600"}
+                {pc:content action="hits" catid="$catid" num="10" order="views DESC" cache="3600"}
                 {loop $data $v}
                     <li><em {if $n==1}class="fi"{/if}{if $n==2}class="se"{/if}{if $n==3}class="th"{/if} >{$n}</em>{$v[title]}</a></li>
                 {/loop}
                 {/pc}
                </ul>
             </div>
+         </div>
          </div>
          <div class="moduleBox">
             <h2><strong>频道本月排行</strong></h2>
