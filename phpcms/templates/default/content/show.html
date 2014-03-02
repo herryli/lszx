@@ -3,19 +3,21 @@
 <div id="content">
   <div class="contentBox inner_bg">
     <div class="inner_nav">
-      <div>{pc:content action="category" catid="$top_parentid" num="15" siteid="$siteid" order="listorder ASC"}
+      <div>
+      {pc:content action="category" catid="$top_parentid" num="15" siteid="$siteid" order="listorder ASC"}
 	  {loop $data $r}
 	  <a href="{$r[url]}">{$r[catname]}</a>
 	  {/loop}
-      {/pc}</div>
+      {/pc}
+      </div>
     </div>
     <div class="in_top clearfix">
       <div class="fl wid71 clearfix">
         <div class="bannerHlist"> <a class="last" href=""><img src="images/bn2.png"></a> </div>
         <div class="moduleBox">
           <div class="listInfo">
-            <h3>{$title}<br/>
-              <span>{$inputtime}&nbsp;&nbsp;&nbsp;来源：{$copyfrom}&nbsp;&nbsp;&nbsp;评论 <a href="#comment_iframe" id="comment">0</a> 点击：0</span> </h3>
+            <h3> {$title} <br/>
+              <span> {$inputtime} &nbsp;&nbsp;&nbsp;来源： {$copyfrom} &nbsp;&nbsp;&nbsp;评论 <a href="#comment_iframe" id="comment">0</a> 点击：0</span> </h3>
             <div class="summary"> {if $description}{$description}{/if} </div>
             <div class="content">
               {$content}
@@ -46,7 +48,11 @@
             </div>
             <div>
               <p class="fr">上一篇：<a href="{$previous_page[url]}">{$previous_page[title]}</a> | 下一篇：<a href="{$next_page[url]}">{$next_page[title]}</a></p>
-              <p>相关热词搜索：{loop $keywords $keyword}<a href="{APP_PATH}index.php?m=content&c=tag&catid={$catid}&tag={urlencode($keyword)}" class="cl_09">{$keyword}</a> </p>
+              <p>相关热词搜索：
+              {loop $keywords $keyword}
+              <a href="{APP_PATH}index.php?m=content&c=tag&catid={$catid}&tag={urlencode($keyword)}" class="cl_09">{$keyword}</a>
+              {/loop}
+              </p>
             </div>
             <div class="related">
               <h4>延伸阅读：</h4>
@@ -121,9 +127,7 @@
               </ul>
             </div> -->
             <div class="clear"></div>
-            {if $allow_comment && module_exists('comment')}
 	        <iframe src="{APP_PATH}index.php?m=comment&c=index&a=init&commentid={id_encode("content_$catid",$id,$siteid)}&iframe=1" width="100%" height="100%" id="comment_iframe" frameborder="0" scrolling="no"></iframe>
-	        {/if}
           </div>
         </div>
       </div>
