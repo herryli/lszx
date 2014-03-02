@@ -1,143 +1,129 @@
 {template "content","header"}
-<!--main-->
-<div class="main">
-	<div class="col-left channel-hot">
-    	<div class="news-hot">
-        <div class="icon"></div>
-        	<div class="content">
-        	{pc:content  action="position" posid="10" catid="$catid" thumb="1" order="listorder DESC" num="1"}
-				{loop $data $v}
-				  <h4 class="blue"><a href="{$v[url]}" target="_blank"{title_style($v[style])}>{str_cut($v[title], 60)}</a></h4>
-                <p><img src="{thumb($v[thumb],90,60)}" width="90" height="60" />{str_cut(strip_tags($v[description]), 160)}</p>
-                <div class="bk20 hr"><hr /></div>
-				{/loop}
-			{/pc}
-			{pc:content  action="lists" catid="$catid" order="id DESC" num="8"}
-                <ul class="list">
-                {loop $data $k $v}
-                	<li style="font-size:120%;">¬∑<a href="{$v[url]}" title="{$v[title]}" target="_blank"{title_style($v[style])}>{str_cut($v[title], 120)}</a></li>
-                {/loop}
-                </ul>
-             {/pc}
-            </div>
-        </div>
+<!--Sbody-->
+<div id="content">
+  <div class="contentBox inner_bg">
+    <div class="inner_nav">
+      <div><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=51">–¬Œ≈</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=52">ºº ı</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=53">’–±Í</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=54">’˛ŒÒ</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=55">’πª·</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=56">ª·‘±</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=57">—ßª·</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=379"> –≥°</a></div>
     </div>
-    
-    
-    <div class="col-auto channel-slide">
-    {pc:block pos="category_zixun_block"}{/pc}
-    <!--  
-    {pc:content  action="lists" catid="$catid" order="listorder DESC" thumb="1" num="5"}
-  		<ul class="thumb">
-  		{loop $data $k $v}
-        	<li {if $n==1}class="on" style="margin:0"{/if}><a href="{$v[url]}"><img src="{thumb($v[thumb], 82, 50)}"  alt="{$v[title]}" width="82" height="50" /><div class="icon"></div></a></li>
-        {/loop}
-        </ul>
-        <div class="col-auto">
-            <ul class="photo">
+    <div class="in_top clearfix">
+      <div class="leftBox wid42">
+          <div class="bannerImg">
+			<ul class="slider" style="top: 0px; opacity: 1;">
+            {pc:content  action="lists" catid="51" order="id DESC" thumb="1" num="4"}
             {loop $data $k $v}
-                <li><a href="{$v[url]}" title="{$v[title]}"><img src="{thumb($v[thumb], 398, 234)}" width="398" height="234" alt="{$v[title]}" /></a></li>
+                <li><img alt="{$v[title]}" src="{thumb($v[thumb], 420, 274)}"><p class="fs_14"><a href="{$v[url]}">{$v[title]}</a></p></li>
             {/loop}
-            </ul>
-            <div class="title">
-            {loop $data $k $v}
-              <p  {if $n==1}style="display:block"{/if}><strong><a href="{$v[url]}" title="{$v[title]}" class="blue"{title_style($v[style])}>{str_cut($v[title], 50)}</a></strong><br />{str_cut(strip_tags($v[description]), 80)}</p>
-            {/loop}
-          </div>
-        </div>
-         {/pc}
-         -->
-    </div>
-   
-    <div class="ads">
-    	<div class="col-left"><script language="javascript" src="{APP_PATH}caches/poster_js/4.js"></script></div>
-        <div class="col-auto">
-        	<div class="left">Êé®ÂπøÈìæÊé•</div>
-            <div class="right">ËøôÈáåÊîæÂπøÂëä</div>
-        </div>
-  </div>
-  <div class="bk10"></div>
-	<div class="col-left">
-	{php $j=1;}
-	<?php //print_r("<pre>");print_r(subcat($catid));?>
-	{loop subcat($catid) $v}
-	{php if($v['type']!=0) continue;}
-        <div class="box cat-area" {if $j%2==1}style="margin-right:10px"{/if}>
-        		<h5 class="title-1">{$v[catname]}<a href="{$v[url]}" class="more">Êõ¥Â§ö>></a></h5>
-             <div class="content">
-             	{if $v['catid'] != 53 && $v['catid'] != 54}
-				{pc:content action="lists" catid="$v[catid]" thumb="1" num="1" order="id DESC"}
-				<p>
-					{loop $data $v}
-						<a href="{$v[url]}" target="_blank"><img src="{thumb($v[thumb],70,60)}" width="70" height="60"/></a>
-						<strong><a href="{$v[url]}" target="_blank" title="{$v[title]}"{title_style($v[style])}>{str_cut($v[title], 30)}</a></strong><br />{str_cut($v[description],116,'..')}
-					{/loop}
-					</p>
-				{/pc}
-                
-                <div class="bk15 hr"></div>
-                {/if}
-                <ul class="list  lh24 f14">
-                {pc:content action="lists" catid="$v[catid]" num="5" order="id DESC"}
-					{loop $data $v}
-						<li><a href="{$v[url]}" target="_blank"{title_style($v[style])}>{str_cut($v[title], 60)}</a></li>
-					{/loop}
-				{/pc}
-                </ul>
-            </div>
-        </div>
-        {if $j%2==0}<div class="bk10"></div>{/if}
-	{$j++}
-	{/loop}
-	
-	<div class="box cat-area" >
-			<h5 class="title-1">
-				Êé®Ëçê‰∫ßÂìÅ<a class="more" href="{APP_PATH}index.php?m=yp&c=index&a=model&modelid=17&siteid={$siteid}">Êõ¥Â§ö>></a>
-			</h5>
-		    <div class="content">
-		       {pc:yp action="position" posid="8" modelid="17" num="6" order="listorder ASC" expiration="1"}
-				<ul class="list  lh24 f14">
-				<?php //debug_print($data); ?>
-				{loop $data $v}
-					<li><a href="{$v[url]}" target="_blank"{title_style($v[style])}>{str_cut($v[title],30)}</a> <font  size="1px"  color="#777"> {str_cut(get_company_by_username($v['username']),35,"")}</font></li>
-				{/loop}
-				</ul>
-				{/pc}
-		    </div>
+            {/pc}
+			</ul>
 		</div>
-  </div>
-    <div class="col-auto">
-        <div class="box">
-            <h5 class="title-2">È¢ëÈÅìÊÄªÊéíË°å</h5>
-            <ul class="content digg">
-            {pc:content action="hits" catid="$catid" num="10" order="views DESC" cache="3600"}
-				{loop $data $v}
-					<li><a href="{$v[url]}" target="_blank"{title_style($v[style])}>{$v[title]}</a></li>
-				{/loop}
-			{/pc}
-            </ul>
-        </div>
-        <div class="bk10"></div>
-        <div class="box">
-            <h5 class="title-2">È¢ëÈÅìÊú¨ÊúàÊéíË°å</h5>
-            <ul class="content rank">
-            {pc:content action="hits" catid="$catid" num="8" order="monthviews DESC" cache="3600"}
-				{loop $data $v}
-				<li><span>{number_format($v[monthviews])}</span><a href="{$v[url]}"{title_style($v[style])} class="title" title="{$v[title]}">{str_cut($v[title],56,'...')}</a></li>
-				{/loop}
-			{/pc}
-            </ul>
-        </div>
+         <div >
+            <ul class="smallImg picontrol">
+                {pc:content  action="lists" catid="51" order="id DESC" thumb="1" num="4"}
+                {loop $data $k $v}
+                    <li class="on"><img alt="" src="{thumb($v[thumb], 92, 57)}"></li>
+                {/loop}
+                {/pc}
+			  </ul>
+         </div>
+       </div>
+       <div class="rightBox wid56">
+           <div class="moduleBox hei34">
+              <h2><a class="more" href="">∏¸∂‡</a><strong>–¬Œ≈</strong></h2>
+              <div class="recomBox info_ns">
+                 <ul>
+                    {pc:content  action="position" posid="16"  thumb="1" order="listorder DESC" num="1"}
+                    {loop $data $v}
+                    <li class="clearfix"><a href="{$v[url]}"><img src="{thumb($v[thumb],120,90)}"></a><h3><a href="{$v[url]}">{str_cut($v[title], 60)}</a></h3><p>{str_cut(strip_tags($v[description]), 160)}</p></li>
+                    {/loop}
+                    {/pc}
+                    {pc:content  action="lists" catid="$catid" order="id DESC" num="6"}
+                    {loop $data $k $v}
+                    <li class="clearfix"><span>{date('m-d', $v['updatetime'])}</span><a href="{$v[url]}">{str_cut($v[title], 120)}</a></li>
+                    {/loop}
+                    {/pc}
+                 </ul>
+             </div>
+           </div>
+       </div>
     </div>
+    <div class="in_mid clearfix">
+         <div class="fl wid71 clearfix">
+            <div class="bannerHlist">
+              <a href="" class="last"><img src="{IMG_PATH}newlook_v20140211/bn2.png"></a>
+           </div>
+
+           {php $j=1;}
+           {loop subcat($catid) $v}
+           {php if($v['type']!=0) continue;}
+           {if $j%2!=0}<div>{/if}
+             <div class="fl moduleBox wid35 ">
+                 <h2><a href="{$v[url]}" class="more">∏¸∂‡</a><strong>{$v[catname]}</strong></h2>
+                 <div class="recomBox info_ns">
+                 <ul>
+                    {pc:content action="lists" catid="$v[catid]" num="10" order="id DESC"}
+                    {loop $data $v}
+                        <li class="clearfix"><a href="{$v[url]}">{str_cut($v[title], 50)}</a></li>
+                    {/loop}
+                    {/pc}
+
+                 </ul>
+             </div>
+             </div>
+             {if $j%2==0}</div>{/if}
+             {$j++}
+             {/loop}
+           <div class="clear"></div>
+           <div class="moduleBox">
+            <h2><a href="{APP_PATH}index.php?m=yp&c=index&a=model&modelid=17&siteid={$siteid}" class="more">∏¸∂‡</a><strong>Õ∆ºˆ≤˙∆∑</strong><span>Œ““™∑¢≤º</span></h2>
+              <div class="newPr pd_list">
+                 <ul>
+                    {pc:yp action="position" posid="8" modelid="17" thumb="1" num="5" order="listorder ASC" expiration="1"}
+                    {loop $data $v}
+                        <li><a href="{$v[url]}" target="_blank"{title_style($v[style])}>{str_cut($v[title],30)}</a> <font  size="1px"  color="#777"> {str_cut(get_company_by_username($v['username']),35,"")}</font></li>
+
+                        <li><a href="{$v[url]}"><img src="{thumb($v[thumb],120,80)}"></a><p><a href="{$v[url]}">{str_cut($v[title],30)}</a></p></li>
+                    {/loop}
+                    {/pc}
+                 </ul>
+             </div>
+           </div>
+        </div>
+        
+        <div class="fr wid27">
+            <div class="bannerHlist">
+              <a href="" class="last"><img src="{IMG_PATH}newlook_v20140211/bn3.png"></a>
+           </div>
+         <div class="moduleBox">
+            <h2><strong>∆µµ¿◊‹≈≈––</strong></h2>
+            <div class="queue">
+               <ul>
+                {pc:content action="hits" catid="$catid" num="10" order="views DESC" cache="3600"}
+                {loop $data $v}
+                    <li><em {if $n==1}class="fi"{/if}{if $n==2}class="se"{/if}{if $n==3}class="th"{/if} >{$n}</em>{$v[title]}</a></li>
+                {/loop}
+                {/pc}
+               </ul>
+            </div>
+         </div>
+         <div class="moduleBox">
+            <h2><strong>∆µµ¿±æ‘¬≈≈––</strong></h2>
+            <div class="queue">
+               <ul>
+                {pc:content action="hits" catid="$catid" num="8" order="monthviews DESC" cache="3600"}
+                {loop $data $v}
+                <li><em class="wd yl">{number_format($v[monthviews])}</em>{$v[title]}</a></li>
+                {/loop}
+                {/pc}
+               </ul>
+            </div>
+         </div>
+         <div class="bannerHlist">
+              <a class="last" href=""><img src="{IMG_PATH}newlook_v20140211/bn3.png"></a>
+           </div>
+        </div>
+		</div>
+    </div>
+  </div>
 </div>
-<script type="text/javascript">
-function ChannelSlide(Name,Class){
-	$(Name+' ul.photo li').sGallery({
-		titleObj:Name+' div.title p',
-		thumbObj:Name+' .thumb li',
-		thumbNowClass:Class
-	});
-}
-new ChannelSlide(".channel-slide","on",311,260);
-</script>
+<!--Ebody-->
 {template "content","footer"}
