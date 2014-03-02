@@ -55,7 +55,7 @@
            {php $j=1;}
            {loop subcat($catid) $v}
            {php if($v['type']!=0) continue;}
-           {if $j%2==0}<div>{/if}
+           {if $j%2!=0}<div>{/if}
              <div class="fl moduleBox wid35 ">
                  <h2><a href="{$v[url]}" class="more">更多</a><strong>{$v[catname]}</strong></h2>
                  <div class="recomBox info_ns">
@@ -68,7 +68,7 @@
 
                  </ul>
              </div>
-             {if $j%2!=0}</div>{/if}
+             {if $j%2==0}</div>{/if}
              {$j++}
              {/loop}
            <div class="clear"></div>
@@ -118,7 +118,7 @@
          </div>
          <div class="bannerHlist">
               <a class="last" href=""><img src="{IMG_PATH}newlook_v20140211/bn3.png"></a>
-           </div>
+         </div>
         </div>
 
     </div>
