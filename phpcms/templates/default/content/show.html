@@ -60,7 +60,7 @@
               	{pc:content action="relation" relation="$relation" id="$id" catid="$catid" num="5" keywords="$rs[keywords]"}
               	{if $data}
               	{loop $data $r}
-                <li><span>{date('m-d',$r[inputtime])</span><a href="{$r[url]">{$r[title]}</a></li>
+                <li><span>{date('m-d',$r[inputtime])}</span><a href="{$r[url]">{$r[title]}</a></li>
                 {/loop}
               	{/if}
           		{/pc}
