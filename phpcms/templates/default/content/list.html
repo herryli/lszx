@@ -1,53 +1,78 @@
 {template "content","header"}
-<!--main-->
-<div class="main">
-	<div class="col-left">
-    	<div class="crumbs"><a href="{siteurl($siteid)}">首页</a><span> > </span>{catpos($catid)} 列表</div>
-    	{pc:content action="lists" catid="$catid" num="25" order="id DESC" page="$page"}
-        <ul class="list lh24 f14">
-{loop $data $r}
-	<li><span class="rt">{date('Y-m-d H:i:s',$r[inputtime])}</span>·<a href="{$r[url]}" target="_blank"{title_style($r[style])}>{$r[title]}</a></li>
-	{if $n%5==0}<li class="bk20 hr"></li>{/if}
-{/loop}
-        </ul>
-        <div id="pages" class="text-c">{$pages}</div>
-{/pc}
-  </div>
-    <div class="col-auto">
-        <div class="box">
-            <h5 class="title-2">频道总排行</h5>
-             {pc:content action="hits" catid="$catid" num="10" order="views DESC" cache="3600"}
-            <ul class="content digg">
-				{loop $data $r}
-					<li><a href="{$r[url]}" target="_blank">{$r[title]}</a></li>
-				{/loop}
-            </ul>
-            {/pc}
-        </div>
-        <div class="bk10"></div>
-        <div class="box">
-
-            <h5 class="title-2">产品推荐<a href="{APP_PATH}index.php?m=yp&c=index&a=model&modelid=17&siteid={$siteid}" class="more">更多>></a></h5>
-			
- 			<!--  
-			<ul class="content digg">
-					<li><a href="{APP_PATH}index.php?m=yp&c=index&a=lists&catid=89&siteid={$siteid}" target="_blank">绿化乔木</a></li>
-					<li><a href="{APP_PATH}index.php?m=yp&c=index&a=lists&catid=93&siteid={$siteid}" target="_blank">园林机械</a></li>
-            </ul>
-			-->
-        </div>
-        <div class="bk10"></div>
-        <div class="box">
-            <h5 class="title-2">频道本月排行</h5>
-             {pc:content action="hits" catid="$catid" num="8" order="monthviews DESC" cache="3600"}
-            <ul class="content rank">
-				{loop $data $r}
-				<li><span>{number_format($r[monthviews])}</span><a href="{$r[url]}"{title_style($r[style])} class="title" title="{$r[title]}">{str_cut($r[title],56,'...')}</a></li>
-				{/loop}
-            </ul>
-            {/pc}
-        </div>
-        
+<!--Sbody-->
+<div id="content">
+  <div class="contentBox inner_bg">
+    <div class="inner_nav">
+      <div><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=51">新闻</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=52">技术</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=53">招标</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=54">政务</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=55">展会</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=56">会员</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=57">学会</a><a href="{APP_PATH}index.php?m=content&c=index&a=lists&catid=379">市场</a></div>
     </div>
+    <div class="in_top clearfix">
+         <div class="fl wid71 clearfix">
+            <div class="bannerHlist">
+              <a class="last" href=""><img src="{IMG_PATH}newlook_v20140211/bn2.png"></a>
+           </div>
+           <div class="moduleBox">
+              <h2 class="bgimg">
+              <strong>{catpos($catid)}</strong>
+              </h2>
+              <div class="imgDown">
+                 <ul class="clearfix">
+                    {pc:content action="lists" catid="$catid" num="25" order="id DESC" page="$page"}
+                    {loop $data $r}
+                    <li>
+                      <span class="fr"><a href="{$r[url]}" class="dw kp"><i class="fl"></i>120点</a></span>
+                      <a href=""><img src="{thumb($r[thumb], 140, 105)}"></a>
+                      <div class="fl wid42">
+                         <p class="title"><a href="">{$r[title]}</a></p>
+                         <p class="note">简介：{$r[description]}</p>
+                         <p>
+                           <em></em><span class="clP">文件大小：</span>{$r[filesize]}<span class="clP">{date('Y-m-d',$r[inputtime])}</span>
+                         </p>
+                      </div>
+                    </li>
+                    {/loop}
+                    {/pc}
+                 </ul>
+                 <div class="page-s" id="pages">
+                   {$pages}
+                 </div>
+              </div>
+           </div>
+        </div>
+        <div class="fr wid27">
+            <div class="bannerHlist">
+              <a href="" class="last"><img src="{IMG_PATH}newlook_v20140211/bn3.png"></a>
+           </div>
+         <div class="moduleBox">
+            <h2><strong>频道总排行</strong></h2>
+            <div class="queue">
+               <ul>
+                pc:content action="hits" catid="$catid" num="10" order="views DESC" cache="3600"}
+                {loop $data $v}
+                    <li><em {if $n==1}class="fi"{/if}{if $n==2}class="se"{/if}{if $n==3}class="th"{/if} >{$n}</em>{$v[title]}</a></li>
+                {/loop}
+                {/pc}
+               </ul>
+            </div>
+         </div>
+         <div class="moduleBox">
+            <h2><strong>频道本月排行</strong></h2>
+            <div class="queue">
+               <ul>
+                {pc:content action="hits" catid="$catid" num="8" order="monthviews DESC" cache="3600"}
+                {loop $data $v}
+                <li><em class="wd yl">{number_format($v[monthviews])}</em>{$v[title]}</a></li>
+                {/loop}
+                {/pc}
+               </ul>
+            </div>
+         </div>
+         <div class="bannerHlist">
+              <a class="last" href=""><img src="{IMG_PATH}newlook_v20140211/bn3.png"></a>
+           </div>
+        </div>
+
+    </div>
+  </div>
 </div>
+<!--Ebody-->
 {template "content","footer"}
