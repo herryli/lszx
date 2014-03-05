@@ -54,7 +54,7 @@
                <ul>
                 {pc:content action="hits" catid="$catid" num="10" order="views DESC" cache="3600"}
                 {loop $data $v}
-                    <li><em {if $n==1}class="fi"{/if}{if $n==2}class="se"{/if}{if $n==3}class="th"{/if} >{$n}</em>{$v[title]}</a></li>
+                    <li><em {if $n==1}class="fi"{/if}{if $n==2}class="se"{/if}{if $n==3}class="th"{/if} >{$n}</em><a href="{$v[url]}">{$v[title]}</a></li>
                 {/loop}
                 {/pc}
                </ul>
@@ -66,7 +66,7 @@
                <ul>
                 {pc:content action="hits" catid="$catid" num="8" order="monthviews DESC" cache="3600"}
                 {loop $data $v}
-                <li><em class="wd yl">{number_format($v[monthviews])}</em>{$v[title]}</a></li>
+                <li><em class="wd yl">{number_format($v[monthviews])}</em><a href="{$v[url]}">{$v[title]}</a></li>
                 {/loop}
                 {/pc}
                </ul>

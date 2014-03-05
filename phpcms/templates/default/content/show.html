@@ -22,7 +22,7 @@
             <div class="content">
               {$content}
             </div>
-            <div class="share clearfix"> 
+            <div class="share clearfix">
               <!-- JiaThis Button BEGIN -->
               <div class="jiathis_style"> <span class="jiathis_txt">分享到：</span>
               <script type="text/javascript">
@@ -43,8 +43,8 @@
               <script type="text/javascript">document.write('<a class="jiathis_button_kaixin001" href="http://www.kaixin001.com/repaste/share.php?rtitle='+encodeURIComponent('{new_addslashes($title)}')+'&rurl='+encodeURIComponent(location.href)+'&rcontent="></a>');</script>
               <script type="text/javascript">document.write('<a class="jiathis_button_qzone" href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url='+encodeURIComponent(location.href)+'"></a>');</script>
               </div>
-              <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script> 
-              <!-- JiaThis Button END --> 
+              <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+              <!-- JiaThis Button END -->
             </div>
             <div>
               <p class="fr">上一篇：<a href="{$previous_page[url]}">{$previous_page[title]}</a> | 下一篇：<a href="{$next_page[url]}">{$next_page[title]}</a></p>
@@ -139,7 +139,7 @@
             <ul>
                 {pc:content action="hits" catid="$catid" num="10" order="views DESC" cache="3600"}
                 {loop $data $v}
-                    <li><em {if $n==1}class="fi"{/if}{if $n==2}class="se"{/if}{if $n==3}class="th"{/if} >{$n}</em>{$v[title]}</a></li>
+                    <li><em {if $n==1}class="fi"{/if}{if $n==2}class="se"{/if}{if $n==3}class="th"{/if} >{$n}</em><a href="{$v[url]}">{$v[title]}</a></li>
                 {/loop}
                 {/pc}
             </ul>
@@ -151,7 +151,7 @@
             <ul>
                 {pc:content action="hits" catid="$catid" num="8" order="monthviews DESC" cache="3600"}
                 {loop $data $v}
-                <li><em class="wd yl">{number_format($v[monthviews])}</em>{$v[title]}</a></li>
+                <li><em class="wd yl">{number_format($v[monthviews])}</em><a href="{$v[url]}">{$v[title]}</a></li>
                 {/loop}
                 {/pc}
             </ul>
