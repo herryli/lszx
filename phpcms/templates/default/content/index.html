@@ -83,7 +83,7 @@
                 <ul>
                    {pc:content action="position" posid="9" order="id DESC" num="10" cache="3600"}
                    {loop $data $r}
-                     <li><a href="{$v[url]}">{$r['title']}</a></li>
+                     <li><a href="{$r[url]}">{$r['title']}</a></li>
                    {/loop}
                    {/pc}
                 </ul>
@@ -129,7 +129,7 @@
                     <li class="clearfix"><h3><a href="{$r['url']}">{str_cut($r[title],36,'')}...</a></h3><a href="{$r['url']}"><img src="{thumb($r[thumb],160,120)}"></a><p class="note">{str_cut($r[description],55,'')}...</p></li>
                     {/loop}
                     {/pc}
-                    {pc:content action="lists" catid="51" thumb="3" num="1" order="updatetime DESC"}
+                    {pc:content action="lists" catid="51" thumb="3" num="4" order="updatetime DESC"}
                     {loop $data $r}
                     {if $n != 1}
                     <li><h3><a href="{$r['url']}">{str_cut($r[title],36,'')}</a></h3><p class="list">{str_cut($r[description],55,'')}...</p></li>
