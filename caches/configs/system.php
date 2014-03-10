@@ -21,12 +21,12 @@ return array(
 
 //附件相关配置
 'upload_path' => PHPCMS_PATH.'uploadfile/',
-'upload_url' => 'http://121.199.44.61/lszx/uploadfile/', //附件路径
+'upload_url' => 'http://42.121.1.90/lszx/uploadfile/', //附件路径
 'attachment_stat' => '1',//是否记录附件使用状态 0 统计 1 统计， 注意: 本功能会加重服务器负担
 
-'js_path' => 'http://www.cdylw.com/lszx/statics/js/', //CDN JS
-'css_path' => 'http://www.cdylw.com/lszx/statics/css/', //CDN CSS
-'img_path' => 'http://www.cdylw.com/lszx/statics/images/', //CDN img
+'js_path' => 'http://42.121.1.90/lszx/statics/js/', //CDN JS
+'css_path' => 'http://42.121.1.90/lszx/statics/css/', //CDN CSS
+'img_path' => 'http://42.121.1.90/lszx/statics/images/', //CDN img
 'app_path' => 'http://www.cdylw.com/lszx/',//动态域名配置地址
 'url_path' => 'cdylw.com/lszx/',//动态域名配置地址
 

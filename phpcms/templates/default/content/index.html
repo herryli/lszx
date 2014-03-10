@@ -8,7 +8,7 @@
             <ul class="slider" >
                 {pc:content  action="position" posid="2" thumb="1" order="listorder DESC" num="5"}
                 {loop $data $r}
-                <li><img src="{thumb($r[thumb],420,274)}" alt=""><p><a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],36,'')}</a></p></li>
+                <li><img src="{thumb($r[thumb],420,274)}" alt=""><p><a href="{$r[url]}" title="{$r[title]}">{str_cut($r[title],32,'')}</a></p></li>
                 {/loop}
                 {/pc}
             </ul>
@@ -22,13 +22,13 @@
              <h2><a href="{APP_PATH}index.php?m=yp&c=index&a=company&siteid={$siteid}" class="more">更多</a><strong>推荐企业</strong><span>我要推荐</span></h2>
              <div class="recomBox">
                  <ul>
-                    {pc:yp action="get_company" num="1" thumb="1" order="regtime DESC" elite="1" }
+                    {pc:yp  action="position" posid="17" modelid="17" thumb="1" order="listorder DESC" num="1"}
                     {loop $data $r}
                     <li class="clearfix"><a href="{$r['url']}"><img src="{thumb($r[thumb],110,90)}"></a><h3>{str_cut($r['title'], 60)}</h3><p>{str_cut($r['description'], 35)}...</p></li>
                     {/loop}
                     {/pc}
                     <li class="clearfix">
-                    {pc:yp action="get_company" num="4" thumb="1" order="regtime DESC" elite="1" }
+                    {pc:yp  action="position" posid="17" modelid="17" thumb="1" order="id DESC" num="4"}
                     {loop $data $r}
                     {if $n!=1}<a href="{$r['url']}"><img src="{thumb($r[thumb],110,90)}"></a>{/if}
                     {/loop}
@@ -43,7 +43,7 @@
              <h2><a href="{APP_PATH}index.php?m=yp&c=index&a=model&modelid=17" class="more">更多</a><strong>最新产品</strong></h2>
              <div class="newPr">
                  <ul>
-                    {pc:yp action="lists" modelid="17" num="4" thumb="1" order="id DESC"}
+                    {pc:yp  action="position" posid="8" modelid="17" thumb="1" order="id DESC" num="4"}
                     {loop $data $r}
                     <li><a href="{$r['url']}"><img src="{thumb($r[thumb],120,80)}"></a><p><a href="{$r['url']}">{str_cut($r['title'], 30)}</a></p></li>
                     {/loop}
@@ -55,9 +55,10 @@
              <h2><a href="{APP_PATH}index.php?m=yp&c=index&a=lists&modelid=18" class="more">更多</a><strong>最新商机</strong></h2>
              <div class="chanceBox">
                  <ul>
-                    {pc:yp action="lists" modelid="18" num="7" order="id DESC"}
+                    {pc:yp  action="lists" modelid="18" order="id DESC" thumb="1" num="7"}
                     {loop $data $r}
-                     <li class="clearfix"><span>{date("m-d",$r[updatetime])}</span><em>[{$r['tid']}]</em><a href="{$r['url']}">{str_cut($r['title'], 60)}</a></li>
+                    <?php $ttidarr = array('1'=>'供应', '2'=>'求购', '3'=>'二手', '4'=>'促销'); ?>
+                     <li class="clearfix"><span>{date("m-d",$r[updatetime])}</span><em style="width:35px;">[{$ttidarr[$r['tid']]}]</em><a href="{$r['url']}">{str_cut($r['title'], 60)}</a></li>
                     {/loop}
                     {/pc}
                  </ul>
@@ -166,9 +167,9 @@
                <h2><a href="{APP_PATH}index.php?m=yp&c=index&a=company&siteid={$siteid}" class="more">更多</a><strong>企业样本</strong><span><a href="">我要发布</a></span></h2>
                <div class="imgList">
                  <ul class="clearfix">
-                    {pc:yp action="get_company" num="4" thumb="1" order="regtime DESC" elite="1" }
+                    {pc:yp  action="position" posid="17" modelid="17" thumb="1" order="id DESC" num="4"}
                     {loop $data $r}
-                    <li><a href="{$v['url']}"><img src="{$r['logo']}"></a><p><a href="{$r['url']}">{str_cut($r['companyname'], 60)}</a></p></li>
+                    <li><a href="{$v['url']}"><img src="{thumb($r['thumb'], 140, 105)}"></a><p><a href="{$r['url']}">{str_cut($r['companyname'], 60)}</a></p></li>
                     {/loop}
                     {/pc}
                  </ul>

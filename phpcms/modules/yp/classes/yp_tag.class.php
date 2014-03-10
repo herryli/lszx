@@ -164,11 +164,10 @@ class yp_tag {
 		require_once CACHE_MODEL_PATH.'content_output.class.php';
 		$content_output = new content_output($modelid);
 		foreach($return as $key=>$val){
-			$return[$key] = $content_output->get($val);
+		//	$return[$key] = $content_output->get($val);
 			$return[$key]['id'] = $val['id'];
 			$return[$key]['userid'] = $val['userid'];
 		}
-		
 		//print_r("<pre>");print_r($return);
 		//调用副表的数据
 		if (isset($data['moreinfo']) && intval($data['moreinfo']) == 1) {
