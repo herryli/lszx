@@ -67,16 +67,18 @@
        </div>
        <div class="rightBox wid27">
               <div class="moduleBox loginBox">
-                <h2><a href="">新会员注册</a><strong>会员登录</strong></h2>
+                <h2><a href="{APP_PATH}index.php?m=member&c=index&a=register&siteid={$siteid}">新会员注册</a><strong>会员登录</strong></h2>
                 <ul>
                     <li>
                       <dl>
-                         <dd class="sr"><input type="text" class="txt" value="用户名" onFocus="if (value=='用户名'){value='';this.style.color='#333'}" onBlur="if(!value){value=defaultValue;this.style.color='#aaa'}">
-                         <input type="text" class="txt" value="密码" onFocus="if (value=='密码'){value='';this.style.color='#333'}" onBlur="if(!value){value=defaultValue;this.style.color='#aaa'}"></dd>
-                         <dd><button class="login">登录</button></dd>
+                      <form method="post" action="{APP_PATH}index.php?m=member&c=index&a=login" onsubmit="save_username();" id="myform" name="myform">
+                         <dd class="sr"><input id="username" type="text" class="txt" name="username" value="用户名" onFocus="if (value=='用户名'){value='';this.style.color='#333'}" onBlur="if(!value){value=defaultValue;this.style.color='#aaa'}">
+                         <input type="text" class="txt" name="password" value="密码" onFocus="if (value=='密码'){value='';this.style.color='#333'}" onBlur="if(!value){value=defaultValue;this.style.color='#aaa'}"></dd>
+                         <input type="hidden" value="1" name="dosubmit" />
+                         <dd><button class="login" onclick="ss();">登录</button></dd>
                       </dl>
                     </li>
-                    <li><em id="recode"></em><span class="cl_aa">记住密码</span><a href="" class="fd_p">找回密码</a></li>
+                    <li><input type="checkbox" name="cookietime" value="2592000" id="cookietime" /><!-- <em id="recode"></em> --><span class="cl_aa">记住用户名</span><a href="{APP_PATH}index.php?m=member&c=index&a=public_forget_password&siteid={$siteid}" class="fd_p">找回密码</a></li>
                 </ul>
              </div>
              <div class="scrollNews" id="notice">
@@ -351,5 +353,28 @@
       </div>
    </div>
 </div>
+<script type="text/javascript">
+function ss()
+{
+    var f = document.getElementById('myform');
+    f.submit();
+}
+
+function save_username()
+{
+    if ($('#cookietime').attr('checked')==true) {
+        var username = $('#username').val();
+        setcookie('username', username, 3);
+    } else {
+        delcookie('username');
+    }
+}
+
+var username = getcookie('username');
+if(username != '' && username != null) {
+    $('#username').val(username);
+    $('#cookietime').attr('checked',true);
+}
+</script>
 <!--Ebody-->
 {template "content","footer"}
